@@ -6,6 +6,12 @@ public class GripperController : MonoBehaviour
 	public void Awake()
 	{
 		trackedController = GetComponentInParent<SteamVR_TrackedController>();
+
+		if (trackedController == null)
+		{
+			throw new System.InvalidOperationException("The \"SteamVR_TrackedController\" component needs to be added to each controller. It's located in \"SteamVR\\Extras\".");
+		}
+
 		velociGripper = GetComponentInParent<VelociGripper>();
 
 		trackedController.TriggerClicked += OnTriggerClicked;

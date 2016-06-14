@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 34933543}
   - 33: {fileID: 34933546}
-  - 65: {fileID: 34933545}
   - 23: {fileID: 34933544}
+  - 64: {fileID: 34933545}
   m_Layer: 0
   m_Name: pit_back
   m_TagString: Untagged
@@ -141,8 +141,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &34933545
-BoxCollider:
+--- !u!64 &34933545
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -151,8 +151,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &34933546
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -273,8 +273,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 405280946}
   - 33: {fileID: 405280949}
-  - 65: {fileID: 405280948}
   - 23: {fileID: 405280947}
+  - 64: {fileID: 405280948}
   m_Layer: 0
   m_Name: front
   m_TagString: Untagged
@@ -320,8 +320,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &405280948
-BoxCollider:
+--- !u!64 &405280948
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -330,8 +330,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &405280949
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -390,8 +390,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 884921055}
   - 33: {fileID: 884921058}
-  - 65: {fileID: 884921057}
   - 23: {fileID: 884921056}
+  - 64: {fileID: 884921057}
   m_Layer: 0
   m_Name: left
   m_TagString: Untagged
@@ -437,8 +437,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &884921057
-BoxCollider:
+--- !u!64 &884921057
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -447,8 +447,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &884921058
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -533,8 +533,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1000557843}
   - 33: {fileID: 1000557846}
-  - 65: {fileID: 1000557845}
   - 23: {fileID: 1000557844}
+  - 64: {fileID: 1000557845}
   m_Layer: 0
   m_Name: pit_bottom
   m_TagString: Untagged
@@ -580,8 +580,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1000557845
-BoxCollider:
+--- !u!64 &1000557845
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -590,8 +590,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1000557846
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -641,7 +641,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f35fa249b5008c44ac2998be6f82d4d, type: 2}
   m_IsPrefabParent: 0
---- !u!43 &1041083467
+--- !u!43 &1027901565
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -825,8 +825,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1211374799}
   - 33: {fileID: 1211374802}
-  - 65: {fileID: 1211374801}
   - 23: {fileID: 1211374800}
+  - 64: {fileID: 1211374801}
   m_Layer: 0
   m_Name: right
   m_TagString: Untagged
@@ -872,8 +872,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1211374801
-BoxCollider:
+--- !u!64 &1211374801
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -882,8 +882,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1211374802
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -934,8 +934,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1585537642}
   - 33: {fileID: 1585537645}
-  - 65: {fileID: 1585537644}
   - 23: {fileID: 1585537643}
+  - 64: {fileID: 1585537644}
   m_Layer: 0
   m_Name: return_back
   m_TagString: Untagged
@@ -981,8 +981,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1585537644
-BoxCollider:
+--- !u!64 &1585537644
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -991,8 +991,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1585537645
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1009,8 +1009,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1643740171}
   - 33: {fileID: 1643740174}
-  - 65: {fileID: 1643740173}
   - 23: {fileID: 1643740172}
+  - 64: {fileID: 1643740173}
   m_Layer: 0
   m_Name: return_bottom
   m_TagString: Untagged
@@ -1056,8 +1056,8 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1643740173
-BoxCollider:
+--- !u!64 &1643740173
+MeshCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1066,8 +1066,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 0
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1643740174
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1204,7 +1204,7 @@ Prefab:
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1041083467}
+      objectReference: {fileID: 1027901565}
     - target: {fileID: 408470, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalPosition.y
       value: 1.54

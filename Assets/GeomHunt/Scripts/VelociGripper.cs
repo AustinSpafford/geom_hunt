@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (VelocityTracker))]
 public class VelociGripper : MonoBehaviour
 {
 	public float PositionCorrectionMetersPerSecondPerDeltaMeters = 50.0f;
@@ -127,15 +128,12 @@ public class VelociGripper : MonoBehaviour
 				}
 				
 				grippedRigidBody.maxAngularVelocity = grippedObjectPriorMaxAngularVelocity;
+				
+				grippedRigidBody.velocity = 
+					(velocityTracker.AverageLinearVelocity * ReleasedLinearVelocityMultiplier);
 
-				if (velocityTracker != null)
-				{
-					grippedRigidBody.velocity = 
-						(velocityTracker.AverageLinearVelocity * ReleasedLinearVelocityMultiplier);
-
-					grippedRigidBody.angularVelocity = 
-						(velocityTracker.AverageAngularVelocity * ReleasedAngularVelocityMultiplier);
-				}
+				grippedRigidBody.angularVelocity = 
+					(velocityTracker.AverageAngularVelocity * ReleasedAngularVelocityMultiplier);
 			}
 
 			grippedObject = null;

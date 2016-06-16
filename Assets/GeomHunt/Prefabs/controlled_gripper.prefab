@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 403200}
   - 114: {fileID: 11438766}
-  - 114: {fileID: 11475562}
   - 114: {fileID: 11434360}
   - 114: {fileID: 11412032}
   m_Layer: 0
@@ -54,6 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc35b1796de4b44eae445d258d952d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugEnabled: 0
 --- !u!114 &11438766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,19 +74,6 @@ MonoBehaviour:
   ReleasedLinearVelocityMultiplier: 1.75
   ReleasedAngularVelocityMultiplier: 1
   DebugEnabled: 0
---- !u!114 &11475562
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e004be93dee42274abb3387ad37f46cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrippedObjectPrefab: {fileID: 0}
-  ParentForSpawnedObjects: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

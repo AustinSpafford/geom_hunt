@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ClickCausesSpawnerReset : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+[RequireComponent (typeof (ClickTarget))] // The click-target is what sends us messages.
+public class ClickCausesSpawnerReset : MonoBehaviour
+{
+	public void OnClickBegin(
+		ClickSource clickSource)
+	{
+		// TODO: Reset the spawned objects.
 	}
 }

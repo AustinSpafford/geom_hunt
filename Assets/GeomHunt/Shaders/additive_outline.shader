@@ -26,23 +26,34 @@
 
 			struct appdata
 			{
-				float4 vertex : POSITION;
+				float4 position : POSITION;
+				float4 normal : NORMAL;
 			};
 
 			struct vertex_to_fragment
 			{
 				UNITY_FOG_COORDS(1)
-				float4 vertex : SV_POSITION;
+				float4 position : SV_POSITION;
 			};
 
 			fixed4 _Color;
+			float _Thickness;
 			
 			vertex_to_fragment vertex_func (appdata input)
 			{
 				vertex_to_fragment output;
-				output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
+				output.position = mul(UNITY_MATRIX_MVP, input.position);
 				
-				UNITY_TRANSFER_FOG(output, output.vertex);
+				// Horizontally offset the vertex position in view-space.
+				{
+					float3 viewspace_normal = mul((float3x3)UNITY_MATRIX_IT_MV, input.normal);
+					float2 projectionspace_normal = TransformViewToProjection(viewspace_normal.xy);
+					float distance_corrected_outline_thickness = (output.position.z * _Thickness);
+
+					output.position.xy += (projectionspace_normal * distance_corrected_outline_thickness);
+				}
+				
+				UNITY_TRANSFER_FOG(output, output.position);
 
 				return output;
 			}

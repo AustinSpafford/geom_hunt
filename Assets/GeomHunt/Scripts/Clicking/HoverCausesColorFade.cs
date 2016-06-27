@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent (typeof (ClickTarget))] // The click-target is what sends us messages.
-public class HoverCausesHighlight : MonoBehaviour
+public class HoverCausesColorFade : MonoBehaviour
 {
 	public Color FadeTargetColor = Color.white;
 	public float FadeInHalflife = 0.05f;

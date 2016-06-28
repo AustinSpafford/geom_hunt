@@ -4,10 +4,11 @@ using System.Collections;
 [RequireComponent (typeof (ClickTarget))] // The click-target is what sends us messages.
 public class HoverCausesOutline : MonoBehaviour
 {
-	public Material OutlineMaterial = null; // The default material is specified in the unity-metadata.
-	
-		// TODO!
-		/*
+	public Shader OutlineShader = null;
+
+	public Color OutlineColor = Color.magenta;
+	public float OutlineThickness = 0.005f;
+
 	public float FadeInHalflife = 0.05f;
 	public float FadeOutHalflife = 0.25f;
 
@@ -15,13 +16,20 @@ public class HoverCausesOutline : MonoBehaviour
 
 	public void Start()
 	{
+		outlineColorPropertyId = Shader.PropertyToID("_OutlineColor");
+		outlineThicknessPropertyId = Shader.PropertyToID("_OutlineThickness");
+
+		if (OutlineShader == null)
+		{
+			throw new System.InvalidOperationException("An OutlineShader must be specified for this component to function!");
+		}
+
 		clickTarget = gameObject.GetComponent<ClickTarget>();
 		renderer = gameObject.GetComponent<Renderer>();
 
 		if (renderer != null)
 		{
 			originalSharedMaterial = renderer.sharedMaterial;
-			originalColor = originalSharedMaterial.color;
 		}
 	}
 
@@ -77,6 +85,8 @@ public class HoverCausesOutline : MonoBehaviour
 		{
 			fadeInstancedMaterial = new Material(originalSharedMaterial);
 
+			fadeInstancedMaterial.shader = OutlineShader;
+
 			renderer.material = fadeInstancedMaterial;
 
 			if (DebugEnabled)
@@ -101,13 +111,24 @@ public class HoverCausesOutline : MonoBehaviour
 
 		if (fadeInstancedMaterial != null)
 		{
-			fadeInstancedMaterial.color = 
+			Color currentOutlineColor = 
 				Color.Lerp(
-					originalColor, 
-					FadeTargetColor, 
+					Color.black, 
+					OutlineColor, 
 					fadeFraction);
+
+			fadeInstancedMaterial.SetColor(
+				outlineColorPropertyId,
+				currentOutlineColor);
+			
+			fadeInstancedMaterial.SetFloat(
+				outlineThicknessPropertyId,
+				OutlineThickness);
 		}
 	}
+
+	private int outlineColorPropertyId = -1;
+	private int outlineThicknessPropertyId = -1;
 	
 	private ClickTarget clickTarget = null;
 	new private Renderer renderer = null;
@@ -117,5 +138,4 @@ public class HoverCausesOutline : MonoBehaviour
 	private Material fadeInstancedMaterial = null;
 	private float fadeFraction = 0.0f;
 	private float fadeVelocity = 0.0f;
-		*/
 }

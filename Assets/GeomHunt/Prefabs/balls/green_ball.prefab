@@ -14,7 +14,7 @@ GameObject:
   - 54: {fileID: 5445692}
   - 114: {fileID: 11471086}
   - 114: {fileID: 11444528}
-  - 114: {fileID: 11425014}
+  - 114: {fileID: 11488876}
   m_Layer: 0
   m_Name: green_ball
   m_TagString: Untagged
@@ -82,21 +82,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11425014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618ae18c095c7a047b1e0a8e1ed1ef82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FadeTargetColor: {r: 1, g: 1, b: 1, a: 1}
-  FadeInHalflife: 0.05
-  FadeOutHalflife: 0.25
-  DebugEnabled: 0
 --- !u!114 &11444528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +104,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a31a803bf366864f85790311a1bcba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugEnabled: 0
+--- !u!114 &11488876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618ae18c095c7a047b1e0a8e1ed1ef82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OutlineShader: {fileID: 4800000, guid: 37d8a80390e63354fb0248ae5b170580, type: 3}
+  OutlineColor: {r: 0, g: 1, b: 0.8758622, a: 1}
+  OutlineThickness: 0.005
+  FadeInHalflife: 0.05
+  FadeOutHalflife: 0.25
   DebugEnabled: 0
 --- !u!135 &13580932
 SphereCollider:

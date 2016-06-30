@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (VelocityTracker))]
+[RequireComponent(typeof(VelocityTracker))]
 public class VelociGripper : MonoBehaviour
 {
 	public float PositionCorrectionMetersPerSecondPerDeltaMeters = 50.0f;

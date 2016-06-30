@@ -65,7 +65,7 @@ public class ClickTarget : MonoBehaviour
 				Debug.LogFormat("A second click source is incoming while we're already clicked. Forcing an early termination on the first click-source.");
 			}
 
-			ActiveClickSource.TerminateClick();
+			ActiveClickSource.TryTerminateClick();
 			
 			if (ActiveClickSource != null)
 			{

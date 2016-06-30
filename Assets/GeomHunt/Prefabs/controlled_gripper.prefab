@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc35b1796de4b44eae445d258d952d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UserInterationMode: 0
   AimingLaser: {fileID: 108086}
   AimingLaserMaxRenderedLength: 10
   AimingDownwardAngle: 25

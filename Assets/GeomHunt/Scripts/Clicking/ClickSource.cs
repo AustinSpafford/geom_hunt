@@ -3,6 +3,14 @@ using System.Collections;
 
 public class ClickSource : MonoBehaviour
 {
+	public enum InteractionMode
+	{
+		MomentaryClicks, // Laser shown at all times, click duration matches trigger-presses.
+		ToggledClicks, // First trigger-press shows laser and starts the click, second trigger-presss terminates the click.
+	}
+
+	public InteractionMode UserInterationMode = InteractionMode.MomentaryClicks;
+
 	public GameObject AimingLaser = null;
 	public float AimingLaserMaxRenderedLength = 10.0f;
 	public float AimingDownwardAngle = 0.0f;
@@ -46,7 +54,7 @@ public class ClickSource : MonoBehaviour
 
 			if (raycastHit.transform != currentHoverTarget)
 			{
-				TerminateHover();
+				TryTerminateHover();
 
 				if (raycastHit.transform != null)
 				{
@@ -94,8 +102,35 @@ public class ClickSource : MonoBehaviour
 		}
 	}
 
-	public void TerminateHover()
+	public bool TryClickHoverTarget()
 	{
+		bool result = false;
+
+		if (currentHoverTarget != null)
+		{
+			TryTerminateClick();
+
+			currentClickTarget = currentHoverTarget;
+
+			if (DebugEnabled)
+			{
+				Debug.LogFormat("Entering click on <b>{0}</b>.", currentClickTarget.name);
+			}
+
+			TryTerminateHover();
+
+			currentClickTarget.EnterClickScope(this);
+
+			result = true;
+		}
+
+		return result;
+	}
+
+	public bool TryTerminateHover()
+	{
+		bool result = false;
+
 		if (currentHoverTarget != null)
 		{
 			if (DebugEnabled)
@@ -106,11 +141,17 @@ public class ClickSource : MonoBehaviour
 			currentHoverTarget.LeaveHoverScope();
 			
 			currentHoverTarget = null;
+
+			result = true;
 		}
+
+		return result;
 	}
 
-	public void TerminateClick()
+	public bool TryTerminateClick()
 	{
+		bool result = false;
+
 		if (currentClickTarget != null)
 		{
 			if (DebugEnabled)
@@ -121,25 +162,36 @@ public class ClickSource : MonoBehaviour
 			currentClickTarget.LeaveClickScope(this);
 			
 			currentClickTarget = null;
+
+			result = true;
 		}
+
+		return result;
 	}
 
 	private void OnTriggerClicked(
 		object sender,
 		ClickedEventArgs eventArgs)
 	{
-		if (currentHoverTarget != null)
+		switch (UserInterationMode)
 		{
-			currentClickTarget = currentHoverTarget;
-
-			if (DebugEnabled)
+			case InteractionMode.MomentaryClicks:
 			{
-				Debug.LogFormat("Entering click on <b>{0}</b>.", currentClickTarget.name);
+				TryClickHoverTarget();
+
+				break;
+			}
+				
+			case InteractionMode.ToggledClicks:
+			{
+				// In the toggle-mode, major state changes only occur on the trigger-release.
+				break;
 			}
 
-			TerminateHover();
-
-			currentClickTarget.EnterClickScope(this);
+			default:
+			{
+				throw new System.InvalidOperationException();
+			}
 		}
 	}
 
@@ -147,15 +199,78 @@ public class ClickSource : MonoBehaviour
 		object sender,
 		ClickedEventArgs eventArgs)
 	{
-		TerminateClick();
+		switch (UserInterationMode)
+		{
+			case InteractionMode.MomentaryClicks:
+			{
+				TryTerminateClick();
+
+				break;
+			}
+				
+			case InteractionMode.ToggledClicks:
+			{
+				// If this is the end of the first trigger-press.
+				if (currentClickTarget == null)
+				{
+					TryClickHoverTarget();
+				}
+				else 
+				{
+					TryTerminateClick();
+				}
+
+				break;
+			}
+
+			default:
+			{
+				throw new System.InvalidOperationException();
+			}
+		}
 	}
 
 	private bool ShouldBeSeekingTarget()
 	{
-		return (currentClickTarget == null);
-	}
+		bool result = false;
 
+		switch (UserInterationMode)
+		{
+			case InteractionMode.MomentaryClicks:
+			{
+				// Momentary-mode always seeks for a target while we're not clicking.
+				result = (currentClickTarget == null);
+
+				break;
+			}
+				
+			case InteractionMode.ToggledClicks:
+			{
+				if (currentClickTarget == null)
+				{
+					// Only seek for targets while the trigger is pressed.
+					result = trackedController.triggerPressed;
+				}
+				else 
+				{
+					// We're clicking, so there's definitely no need to search.
+					result = false;
+				}
+
+				break;
+			}
+
+			default:
+			{
+				throw new System.InvalidOperationException();
+			}
+		}
+
+		return result;
+	}
+	
 	private SteamVR_TrackedController trackedController = null;
+
 	private ClickTarget currentHoverTarget = null;
 	private ClickTarget currentClickTarget = null;
 }

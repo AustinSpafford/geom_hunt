@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(ClickTarget))] // The click-target is what sends us messages.
-public class ClickCausesExplosion : MonoBehaviour
+public class ClickCausesExplosion : ClickCausesInstantAction
 {
-	public void OnClickBegin(
+	public override void OnInstantClick(
 		ClickSource clickSource)
 	{
-		// TODO: Explode.
+		Debug.LogWarning("TODO: KABOOM!");
 	}
 }

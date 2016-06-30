@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(ClickTarget))] // The click-target is what sends us messages.
-public class ClickCausesSpawnerReset : MonoBehaviour
+public class ClickCausesSpawnerReset : ClickCausesInstantAction
 {
-	public void OnClickBegin(
+	public override void OnInstantClick(
 		ClickSource clickSource)
 	{
-		// TODO: Reset the spawned objects.
+		Debug.LogWarning("TODO: Reset the spawner.");
 	}
 }

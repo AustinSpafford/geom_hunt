@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (ClickTarget))] // The click-target is what sends us messages.
-public class HoverCausesHighlight : MonoBehaviour
+[RequireComponent(typeof(ClickTarget))] // The click-target is what sends us messages.
+public class HoverCausesColorFade : MonoBehaviour
 {
-	public Color FadeTargetColor = Color.white;
+	[ColorUsageAttribute(true, true, 0.0f, 8.0f, 0.125f, 3.0f)] // Enable HDR color-selections to permit textured objects to be brightened.
+	public Color FadeTargetColor = new Color(1.5f, 1.5f, 1.5f);
+
 	public float FadeInHalflife = 0.05f;
 	public float FadeOutHalflife = 0.25f;
 

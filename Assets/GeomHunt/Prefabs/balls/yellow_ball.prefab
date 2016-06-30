@@ -93,9 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196a7b44142bfc4a87438e4ccc55342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeTargetColor: {r: 1, g: 1, b: 1, a: 1}
-  FadeInSeconds: 0.1
-  FadeOutSeconds: 1
+  FadeTargetColor: {r: 1.5, g: 1.5, b: 0.6568966, a: 1}
+  FadeInHalflife: 0.05
+  FadeOutHalflife: 0.25
   DebugEnabled: 0
 --- !u!114 &11475470
 MonoBehaviour:

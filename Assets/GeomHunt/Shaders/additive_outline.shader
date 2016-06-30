@@ -2,20 +2,22 @@
 {
 	Properties
 	{
-		_Color("Color", Color) = (1,0,1,1)
-		_Thickness("Thickness", Range(0.0, 0.03)) = 0.005
+		_OutlineColor("OutlineColor", Color) = (1,0,1,1)
+		_OutlineThickness("OutlineThickness", Range(0.0, 0.03)) = 0.005
 	}
 
 	SubShader
 	{
-		Tags { "Queue"="Transparent" }
-		Cull Front
-		Blend OneMinusDstColor One // Low-saturation additive blending.
-		ZTest LEqual
-		ZWrite On // We need to perform a write, otherwise the skybox would stomp us.
-
 		Pass
 		{
+			Name "OUTLINE"
+
+			Tags { "Queue"="Transparent" }
+			Cull Front
+			Blend OneMinusDstColor One // Low-saturation additive blending.
+			ZTest LEqual
+			ZWrite On // We need to perform a write, otherwise the skybox would stomp us.
+
 			CGPROGRAM
 
 			#pragma vertex vertex_func
@@ -36,8 +38,8 @@
 				float4 position : SV_POSITION;
 			};
 
-			fixed4 _Color;
-			float _Thickness;
+			fixed4 _OutlineColor;
+			float _OutlineThickness;
 			
 			vertex_to_fragment vertex_func (appdata input)
 			{
@@ -48,9 +50,9 @@
 				{
 					float3 viewspace_normal = mul((float3x3)UNITY_MATRIX_IT_MV, input.normal);
 					float2 projectionspace_normal = TransformViewToProjection(viewspace_normal.xy);
-					float distance_corrected_outline_thickness = (output.position.z * _Thickness);
+					float distance_corrected_outline_OutlineThickness = (output.position.z * _OutlineThickness);
 
-					output.position.xy += (projectionspace_normal * distance_corrected_outline_thickness);
+					output.position.xy += (projectionspace_normal * distance_corrected_outline_OutlineThickness);
 				}
 				
 				UNITY_TRANSFER_FOG(output, output.position);
@@ -60,7 +62,7 @@
 			
 			fixed4 fragment_func (vertex_to_fragment input) : SV_Target
 			{
-				fixed4 output = _Color;
+				fixed4 output = _OutlineColor;
 
 				UNITY_APPLY_FOG(input.fogCoord, output);
 

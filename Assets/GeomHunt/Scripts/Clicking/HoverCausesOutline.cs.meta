@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 618ae18c095c7a047b1e0a8e1ed1ef82
-timeCreated: 1466901098
+timeCreated: 1467082950
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - OutlineMaterial: {fileID: 2100000, guid: 0ad81da24e71cdb418a45d6bf2cae5b0, type: 2}
+  - blah: {fileID: 2100000, guid: 5054ba78bc2b4d14abd00d016307b3da, type: 2}
+  - OutlineShader: {fileID: 4800000, guid: 37d8a80390e63354fb0248ae5b170580, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

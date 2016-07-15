@@ -16,14 +16,7 @@ public class OnUnityLoad
 		if (EditorApplication.isPlayingOrWillChangePlaymode &&
 			!EditorApplication.isPlaying)
 		{
-			var activeScene = EditorSceneManager.GetActiveScene();
-
-			if (activeScene.isDirty)
-			{
-				Debug.Log("Auto-Saving scene before entering Play mode: " + activeScene.name);
-
-				EditorSceneManager.SaveScene(activeScene);
-			}
+			EditorSceneManager.SaveOpenScenes();
 
 			EditorApplication.SaveAssets();
 		}

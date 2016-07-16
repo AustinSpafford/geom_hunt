@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11418140}
   - 114: {fileID: 11495680}
   - 114: {fileID: 11467790}
+  - 114: {fileID: 11489870}
   m_Layer: 0
   m_Name: white_cube
   m_TagString: Untagged
@@ -131,6 +132,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressName: found_white_cube
   ProgressValue: 1
+  ChangeType: 0
+--- !u!114 &11489870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6dab2b685d5e7f45befc8a031272341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressName: grabbed_white_cube_count
+  ProgressValue: 1
+  ChangeType: 1
 --- !u!114 &11495680
 MonoBehaviour:
   m_ObjectHideFlags: 1

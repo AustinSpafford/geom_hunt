@@ -16,10 +16,12 @@ public struct ProgressChangedEventArgs
 	public int NewValueAsInt;
 }
 
-public delegate void ProgressChangedEventHandler(ProgressChangedEventArgs eventArgs);
+public delegate void ProgressChangedEventHandler(object sender, ProgressChangedEventArgs eventArgs);
 
 public class ProgressStorage : MonoBehaviour
 {
+	public static event ProgressChangedEventHandler ProgressChanged;
+
 	public static ProgressStorage LocalPlayerProgressStorage
 	{
 		get
@@ -29,8 +31,6 @@ public class ProgressStorage : MonoBehaviour
 			return cachedLocalPlayerProgressStorage;
 		}
 	}
-
-	public event ProgressChangedEventHandler ProgressChanged;
 
 	public bool DebugEnabled = false;
 
@@ -133,7 +133,7 @@ public class ProgressStorage : MonoBehaviour
 		{
 			throw new System.ArgumentNullException(
 				progressName, 
-				"Progress names must be non-empty strings.");
+				"Progress names must be a non-empty string.");
 		}
 
 		if (progressEntries.TryGetValue(progressName, out result))
@@ -188,7 +188,7 @@ public class ProgressStorage : MonoBehaviour
 
 			if (ProgressChanged != null)
 			{
-				ProgressChanged(eventArgs);
+				ProgressChanged(this, eventArgs);
 			}
 		}
 	}

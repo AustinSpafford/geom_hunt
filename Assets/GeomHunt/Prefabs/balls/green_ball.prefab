@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11471086}
   - 114: {fileID: 11444528}
   - 114: {fileID: 11415008}
+  - 114: {fileID: 11424350}
   m_Layer: 0
   m_Name: green_ball
   m_TagString: Untagged
@@ -97,6 +98,19 @@ MonoBehaviour:
   FadeInHalflife: 0.05
   FadeOutHalflife: 0.25
   DebugEnabled: 0
+--- !u!114 &11424350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6dab2b685d5e7f45befc8a031272341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressName: found_green_ball
+  ProgressValue: 1
 --- !u!114 &11444528
 MonoBehaviour:
   m_ObjectHideFlags: 1

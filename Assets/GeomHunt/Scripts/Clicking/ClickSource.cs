@@ -28,9 +28,18 @@ public class ClickSource : MonoBehaviour
 		{
 			throw new System.InvalidOperationException("The \"SteamVR_TrackedController\" component needs to be added to each controller. It's located in \"SteamVR\\Extras\".");
 		}
+	}
 
+	public void OnEnable()
+	{
 		trackedController.TriggerClicked += OnTriggerClicked;
 		trackedController.TriggerUnclicked += OnTriggerUnclicked;
+	}
+
+	public void OnDisable()
+	{
+		trackedController.TriggerClicked -= OnTriggerClicked;
+		trackedController.TriggerUnclicked -= OnTriggerUnclicked;
 	}
 
 	public void Update()

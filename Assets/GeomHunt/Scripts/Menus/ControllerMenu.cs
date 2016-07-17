@@ -17,11 +17,13 @@ public class ControllerMenu : MonoBehaviour
 
 	public static event ControllerMenuOpenedEventHandler ControllerMenuOpened;
 	
-	public GameObject MenuRootPrefab = null;
+	public GameObject TargetMenuRoot = null;
 
 	public InteractionMode UserInterationMode = InteractionMode.ToggledMenu;
 
 	public bool CloseWhenAnotherMenuOpens = true;
+
+	public bool DebugEnabled = false;
 
 	public void Awake()
 	{
@@ -33,8 +35,18 @@ public class ControllerMenu : MonoBehaviour
 		}
 	}
 
+	public void Start()
+	{
+		TryCloseMenu();
+	}
+
 	public void OnEnable()
 	{
+		if (trackedController.padPressed)
+		{
+			OnPadClickedInternal();
+		}
+
 		ControllerMenuOpened += OnControllerMenuOpened;
 
 		trackedController.PadClicked += OnPadClicked;
@@ -47,23 +59,28 @@ public class ControllerMenu : MonoBehaviour
 
 		trackedController.PadClicked -= OnPadClicked;
 		trackedController.PadUnclicked -= OnPadUnclicked;
+		
+		if (trackedController.padPressed)
+		{
+			OnPadUnclickedInternal();
+		}
 	}
 	
 	private SteamVR_TrackedController trackedController = null;
 
-	private GameObject InstantiatedMenuRoot = null;
-
-	private void OpenMenu()
+	private bool TryOpenMenu()
 	{
-		if (InstantiatedMenuRoot == null)
+		bool result = false;
+
+		if ((TargetMenuRoot != null) &&
+			(TargetMenuRoot.activeSelf == false))
 		{
-			InstantiatedMenuRoot = GameObject.Instantiate(MenuRootPrefab);
+			TargetMenuRoot.SetActive(true);
 
-			InstantiatedMenuRoot.transform.parent = transform;
-
-			InstantiatedMenuRoot.transform.localPosition = Vector3.zero;
-			InstantiatedMenuRoot.transform.localRotation = Quaternion.identity;
-			InstantiatedMenuRoot.transform.localScale = Vector3.one;
+			if (DebugEnabled)
+			{
+				Debug.Log("Opened menu.");
+			}
 
 			if (ControllerMenuOpened != null)
 			{
@@ -71,17 +88,31 @@ public class ControllerMenu : MonoBehaviour
 
 				ControllerMenuOpened(this, eventArgs);
 			}
+
+			result = true;
 		}
+
+		return result;
 	}
 
-	private void CloseMenu()
+	private bool TryCloseMenu()
 	{
-		if (InstantiatedMenuRoot != null)
-		{
-			DestroyObject(InstantiatedMenuRoot);
+		bool result = false;
 
-			InstantiatedMenuRoot = null;
+		if ((TargetMenuRoot != null) &&
+			TargetMenuRoot.activeSelf)
+		{
+			TargetMenuRoot.SetActive(false);
+
+			if (DebugEnabled)
+			{
+				Debug.Log("Closed menu.");
+			}
+
+			result = true;
 		}
+
+		return result;
 	}
 
 	private void OnControllerMenuOpened(
@@ -91,7 +122,7 @@ public class ControllerMenu : MonoBehaviour
 		if ((Object.ReferenceEquals(sender, this) == false) &&
 			CloseWhenAnotherMenuOpens)
 		{
-			CloseMenu();
+			TryCloseMenu();
 		}
 	}
 
@@ -99,24 +130,30 @@ public class ControllerMenu : MonoBehaviour
 		object sender,
 		ClickedEventArgs eventArgs)
 	{
+		OnPadClickedInternal();
+	}
+
+	private void OnPadClickedInternal()
+	{
 		switch (UserInterationMode)
 		{
 			case InteractionMode.MomentaryMenu:
 			{
-				OpenMenu();
+				TryOpenMenu();
 
 				break;
 			}
 				
 			case InteractionMode.ToggledMenu:
 			{
-				if (InstantiatedMenuRoot == null)
+				if ((TargetMenuRoot != null) && 
+					(TargetMenuRoot.activeSelf == false))
 				{
-					OpenMenu();
+					TryOpenMenu();
 				}
 				else
 				{
-					CloseMenu();
+					TryCloseMenu();
 				}
 
 				break;
@@ -131,11 +168,16 @@ public class ControllerMenu : MonoBehaviour
 		object sender,
 		ClickedEventArgs eventArgs)
 	{
+		OnPadUnclickedInternal();
+	}
+
+	private void OnPadUnclickedInternal()
+	{
 		switch (UserInterationMode)
 		{
 			case InteractionMode.MomentaryMenu:
 			{
-				CloseMenu();
+				TryCloseMenu();
 
 				break;
 			}

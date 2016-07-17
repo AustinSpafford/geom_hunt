@@ -40,6 +40,8 @@ public class ClickSource : MonoBehaviour
 	{
 		trackedController.TriggerClicked -= OnTriggerClicked;
 		trackedController.TriggerUnclicked -= OnTriggerUnclicked;
+
+		TryTerminateClick();
 	}
 
 	public void Update()

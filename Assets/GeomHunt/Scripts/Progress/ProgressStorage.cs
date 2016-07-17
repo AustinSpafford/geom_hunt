@@ -162,7 +162,7 @@ public class ProgressStorage : MonoBehaviour
 
 		if (newValue != progressEntry.ProgressValueStorage)
 		{
-			ProgressChangedEventArgs eventArgs = new ProgressChangedEventArgs();
+			var eventArgs = new ProgressChangedEventArgs();
 
 			eventArgs.ProgressName = progressName;
 

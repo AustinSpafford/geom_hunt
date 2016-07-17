@@ -1,47 +1,46 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &127914
+--- !u!1 &186646
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 454572}
-  - 33: {fileID: 3328250}
-  - 135: {fileID: 13580932}
-  - 23: {fileID: 2303664}
-  - 54: {fileID: 5445692}
-  - 114: {fileID: 11471086}
-  - 114: {fileID: 11444528}
-  - 114: {fileID: 11415008}
-  - 114: {fileID: 11424350}
-  - 114: {fileID: 11499688}
+  - 4: {fileID: 457884}
+  - 33: {fileID: 3392904}
+  - 23: {fileID: 2315232}
+  - 54: {fileID: 5455484}
+  - 64: {fileID: 6437622}
+  - 114: {fileID: 11488808}
+  - 114: {fileID: 11423694}
+  - 114: {fileID: 11420094}
+  - 114: {fileID: 11413678}
   m_Layer: 0
-  m_Name: green_ball
+  m_Name: green_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &454572
+--- !u!4 &457884
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
-  m_LocalRotation: {x: 0.04393933, y: -0.0018475383, z: 0.041969724, w: 0.9981505}
-  m_LocalPosition: {x: 0.012976434, y: 0.7750561, z: -0.0133628175}
-  m_LocalScale: {x: 0.17321807, y: 0.1732181, z: 0.1732181}
+  m_GameObject: {fileID: 186646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.06, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2303664
+--- !u!23 &2315232
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
+  m_GameObject: {fileID: 186646}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,19 +61,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3328250
+--- !u!33 &3392904
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5445692
+  m_GameObject: {fileID: 186646}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5455484
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
+  m_GameObject: {fileID: 186646}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -84,12 +83,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11415008
+--- !u!64 &6437622
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11413678
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
+  m_GameObject: {fileID: 186646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6dab2b685d5e7f45befc8a031272341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressName: found_green_box
+  ProgressValue: 1
+  ChangeType: 0
+--- !u!114 &11420094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186646}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4196a7b44142bfc4a87438e4ccc55342, type: 3}
@@ -99,69 +124,29 @@ MonoBehaviour:
   FadeInHalflife: 0.05
   FadeOutHalflife: 0.25
   DebugEnabled: 0
---- !u!114 &11424350
+--- !u!114 &11423694
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6dab2b685d5e7f45befc8a031272341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ProgressName: found_green_ball
-  ProgressValue: 1
-  ChangeType: 0
---- !u!114 &11444528
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
+  m_GameObject: {fileID: 186646}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 472c08c595407ae4a910d7dedf78695f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11471086
+--- !u!114 &11488808
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
+  m_GameObject: {fileID: 186646}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a31a803bf366864f85790311a1bcba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DebugEnabled: 0
---- !u!114 &11499688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6dab2b685d5e7f45befc8a031272341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ProgressName: grabbed_green_ball_count
-  ProgressValue: 1
-  ChangeType: 1
---- !u!135 &13580932
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127914}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -171,5 +156,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 127914}
+  m_RootGameObject: {fileID: 186646}
   m_IsPrefabParent: 1

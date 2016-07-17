@@ -41,6 +41,8 @@ public class ActivateObjectOnProgressCondition : MonoBehaviour
 	
 	public void OnEnable()
 	{
+		UpdateTargetObjectActivation();
+
 		ProgressStorage.ProgressChanged += OnProgressChanged;
 	}
 	

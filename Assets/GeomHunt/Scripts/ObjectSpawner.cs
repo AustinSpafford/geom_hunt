@@ -44,7 +44,7 @@ public class ObjectSpawner : MonoBehaviour
 							spawneesContainer.transform.parent = transform.parent;
 							
 							spawneesContainer.transform.localPosition = Vector3.zero;
-							spawneesContainer.transform.localScale = Vector3.one;
+							spawneesContainer.transform.localRotation = Quaternion.identity;
 							spawneesContainer.transform.localScale = Vector3.one;
 						}
 					}

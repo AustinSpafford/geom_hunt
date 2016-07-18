@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public struct ProgressChangedEventArgs
+public class ProgressChangedEventArgs : EventArgs
 {
 	public string ProgressName;
 
@@ -16,11 +17,9 @@ public struct ProgressChangedEventArgs
 	public int NewValueAsInt;
 }
 
-public delegate void ProgressChangedEventHandler(object sender, ProgressChangedEventArgs eventArgs);
-
 public class ProgressStorage : MonoBehaviour
 {
-	public static event ProgressChangedEventHandler ProgressChanged;
+	public static event EventHandler<ProgressChangedEventArgs> ProgressChanged;
 
 	public static ProgressStorage LocalPlayerProgressStorage
 	{
@@ -110,13 +109,13 @@ public class ProgressStorage : MonoBehaviour
 
 			if (progressStorages.Length == 0)
 			{
-				throw new System.InvalidOperationException(
+				throw new InvalidOperationException(
 					"There are no active ProgressStorage components, thus there's no progress storage for the local player.");
 			}
 
 			if (progressStorages.Length > 1)
 			{
-				throw new System.InvalidOperationException(
+				throw new InvalidOperationException(
 					"There are multiple active ProgressStorage components, thus it's ambiguous as to which one is for the local player. This likely means ProgressStorage itself needs to be further iterated upon to remove the ambiguity.");
 			}
 
@@ -131,7 +130,7 @@ public class ProgressStorage : MonoBehaviour
 
 		if (string.IsNullOrEmpty(progressName))
 		{
-			throw new System.ArgumentNullException(
+			throw new ArgumentNullException(
 				progressName, 
 				"Progress names must be a non-empty string.");
 		}

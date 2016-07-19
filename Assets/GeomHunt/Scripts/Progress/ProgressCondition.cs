@@ -105,6 +105,11 @@ public class ProgressCondition : MonoBehaviour
 
 			foreach (ConditionClause clause in ConditionClauses)
 			{
+				if (string.IsNullOrEmpty(clause.ProgressName))
+				{
+					throw new System.InvalidOperationException("Condition-clause rendered invalid by a missing progress-name.");
+				}
+
 				float progressValue = 
 					progressStorage.GetProgressValueAsFloat(clause.ProgressName);
 

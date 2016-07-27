@@ -13,15 +13,25 @@ using UnityEditor.Callbacks;
 [ExecuteInEditMode]
 public class PrefabInstance : MonoBehaviour
 {
-	public enum InstantiationMode
+	public enum InstantiationTiming
 	{
-		InsertInstanceDuringGameBuild,
-		OnlyInstantiateOnScriptStart,
+		ConvertToInstanceDuringGameBuild,
+		OnlyConvertToInstanceOnScriptStart,
 	}
 
 	public GameObject Prefab = null;
 
-	public InstantiationMode Instantiation = InstantiationMode.InsertInstanceDuringGameBuild;
+	public InstantiationTiming Timing = InstantiationTiming.ConvertToInstanceDuringGameBuild;
+
+	public void OnStart()
+	{
+		if (Timing == InstantiationTiming.OnlyConvertToInstanceOnScriptStart)
+		{
+			TryInstantiatePrefab();
+
+			Destroy(this);
+		}
+	}
 	
 #if UNITY_EDITOR
 	public void OnValidate()
@@ -95,13 +105,48 @@ public class PrefabInstance : MonoBehaviour
 		}
 	}
 
+	[PostProcessScene]
+	public static void OnPostprocessScene()
+	{
+		var unvisitedInstantiators = new Stack<PrefabInstance>(FindObjectsOfType<PrefabInstance>());
+		var garbagePrefabInstantiators = new List<PrefabInstance>();
+
+		while (unvisitedInstantiators.Count > 0)
+		{
+			PrefabInstance prefabInstantiator = unvisitedInstantiators.Pop();
+
+			if (prefabInstantiator.Timing == InstantiationTiming.ConvertToInstanceDuringGameBuild)
+			{
+				GameObject instantiatedPrefab = prefabInstantiator.TryInstantiatePrefab();
+				
+				if (instantiatedPrefab)
+				{
+					foreach (PrefabInstance newPrefabInstantiator in instantiatedPrefab.GetComponentsInChildren<PrefabInstance>())
+					{
+						unvisitedInstantiators.Push(newPrefabInstantiator);
+					}
+				}
+
+				garbagePrefabInstantiators.Add(prefabInstantiator);
+			}
+		}
+
+		// Clean up all of the build-time prefab instantiators.
+		for (int index = 0;
+			index < garbagePrefabInstantiators.Count;
+			++index)
+		{
+			Destroy(garbagePrefabInstantiators[index]);
+		}
+	}
+
 	public void OnPrefabInstanceUpdated(
 		GameObject prefabInstance)
 	{
-		// NOTE: This method of detecting changes to previewed prefabs is flawed, specifically
-		// in that we will not receive a notification if the prefab is being edited directly
-		// through the asset browser, and it's not instantiated in the scene heirarchy.
-		// This can be made more robust by additionally using a FileSystemWatcher to
+		// NOTE: This method of detecting changes to previewed prefabs is flawed in that
+		// we will not receive a notification if there's no instantiated prefab in
+		// the scene when the prefab-source is being edited directly through the asset browser.
+		// If needed, this can be made more robust by additionally using a FileSystemWatcher to
 		// watch AssetDatabase.GetAssetPath(Prefab), but even that doesn't catch changes until the scene is saved.
 
 		GameObject prefabSource = PrefabUtility.GetPrefabParent(prefabInstance) as GameObject;
@@ -142,6 +187,32 @@ public class PrefabInstance : MonoBehaviour
 
 	[System.NonSerialized]
 	private List<PrefabInstantiationPreview> instantiationPreviews = new List<PrefabInstantiationPreview>();
+
+	private GameObject TryInstantiatePrefab()
+	{
+		GameObject result = null;
+
+		if (enabled &&
+			(Prefab != null))
+		{
+			// It's pure reentrancy paranoia, but disable ourselves just
+			// in case the call stack winds its way back to us.
+			enabled = false;
+
+			result = PrefabUtility.InstantiatePrefab(Prefab) as GameObject;
+
+			Quaternion orientation = result.transform.localRotation;
+			Vector3 scale = result.transform.localScale;
+
+			result.transform.parent = transform;
+
+			result.transform.localPosition = Vector3.zero;
+			result.transform.localRotation = orientation;
+			result.transform.localScale = scale;
+		}
+
+		return result;
+	}
 
 	private void UpdatePreviewNodes()
 	{

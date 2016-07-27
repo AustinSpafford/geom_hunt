@@ -41,6 +41,30 @@ public class PrefabInstance : MonoBehaviour
 		PrefabUtility.prefabInstanceUpdated -= OnPrefabInstanceUpdated;
 	}
 
+	public void OnDrawGizmosSelected()
+	{
+		if (EditorApplication.isPlaying == false)
+		{
+			// Attempting to imitate the mesh-lines color for when objects are normally selected.
+			Gizmos.color = new Color(1.0f, 1.0f, 1.0f, 0.1f);
+			
+			Matrix4x4 previewRootTransform = transform.localToWorldMatrix;
+			
+			foreach (PrefabInstantiationPreview instantiationPreview in instantiationPreviews)
+			{
+				if (instantiationPreview.SourcePrefabInstance.Prefab.activeSelf)
+				{
+					foreach (MeshPreview meshPreview in instantiationPreview.PreviewMeshes)
+					{
+						Gizmos.matrix = (previewRootTransform * meshPreview.Transform);
+
+						Gizmos.DrawWireMesh(meshPreview.Mesh);
+					}
+				}
+			}
+		}
+	}
+
 	public void Update()
 	{
 		if (EditorApplication.isPlaying == false)

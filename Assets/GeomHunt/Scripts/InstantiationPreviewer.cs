@@ -65,7 +65,7 @@ public class InstantiationPreviewer : MonoBehaviour
 
 		prefabInstantiations.Add(prefabInstantiation);
 
-		InvalidateCache("preview_added");
+		InvalidateCache("instantiation_added");
 	}
 
 	public void ClearInstantiationPreviewsForSource(
@@ -77,7 +77,7 @@ public class InstantiationPreviewer : MonoBehaviour
 
 		if (removedCount > 0)
 		{
-			InvalidateCache("preview_removed");
+			InvalidateCache("instantiation_removed");
 		}
 	}
 
@@ -230,8 +230,11 @@ public class InstantiationPreviewer : MonoBehaviour
 		if (DebugEnabled)
 		{
 			Debug.LogFormat(
-				"Invalidated cache. (reason=[{0}])",
-				debugInvalidationReason);
+				"[{0}].[{1}] Invalidated cache. Reason=[{2}]. InstantiationCount=[{3}].",
+				gameObject.name,
+				this.GetType().Name,
+				debugInvalidationReason,
+				prefabInstantiations.Count);
 		}
 	}
 
@@ -239,9 +242,7 @@ public class InstantiationPreviewer : MonoBehaviour
 	{
 		if (cacheIsValid == false)
 		{
-			if (enabled &&
-				gameObject.activeSelf &&
-				(EditorApplication.isPlaying == false))
+			if (EditorApplication.isPlaying == false)
 			{
 				AppendPreviewNodesRecursive(
 					this,
@@ -254,9 +255,12 @@ public class InstantiationPreviewer : MonoBehaviour
 			if (DebugEnabled)
 			{
 				Debug.LogFormat(
-					"Refreshed cache. Enabled=[{0}]. IsPlaying=[{1}].", 
+					"[{0}].[{1}] Refreshed cache. Enabled=[{2}]. IsPlaying=[{3}]. InstantiationCount=[{4}].", 
+					gameObject.name,
+					this.GetType().Name,
 					enabled, 
-					EditorApplication.isPlaying);
+					EditorApplication.isPlaying,
+					prefabInstantiations.Count);
 			}
 		}
 	}
@@ -266,95 +270,98 @@ public class InstantiationPreviewer : MonoBehaviour
 		Matrix4x4 simulatedPreviewerLocalToWorldMatrix,
 		List<PrefabPreview> inoutPrefabPreviews)
 	{
-		foreach (PrefabInstantiation prefabInstantiation in previewer.prefabInstantiations)
+		// NOTE: We're not checking activeInHierarchy because
+		// it returns false for prefabs that are not in a scene.
+		if (previewer.enabled &&
+			previewer.gameObject.activeSelf)
 		{
-			GameObject prefabSource = prefabInstantiation.Prefab;
+			foreach (PrefabInstantiation prefabInstantiation in previewer.prefabInstantiations)
+			{
+				GameObject prefabSource = prefabInstantiation.Prefab;
 			
-			// We'll build up the matrix from the leaf-transform back to the root.
-			Matrix4x4 instantiationLocalToWorldMatrix;
-			{
-				Vector3 filteredPrefabLocalPosition =
-					((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabPosition) != 0) ?
-						Vector3.zero :
-						prefabSource.transform.localPosition;
-				
-				Quaternion filteredPrefabLocalRotation =
-					((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabRotation) != 0) ?
-						Quaternion.identity :
-						prefabSource.transform.localRotation;
-				
-				Vector3 filteredPrefabLocalScale =
-					((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabScale) != 0) ?
-						Vector3.one :
-						prefabSource.transform.localScale;
-
-				// NOTE: It's confusing as hell, but we're first undoing the 
-				// prefab's local transform, and then redoing the parts of it
-				// we actually want. This is frankly easier than decomposing the 
-				// transform and then just applying the portions we actually want included.
-				instantiationLocalToWorldMatrix =
-					Matrix4x4.TRS(
-						filteredPrefabLocalPosition,
-						filteredPrefabLocalRotation,
-						filteredPrefabLocalScale) *
-					Matrix4x4.TRS(
-						prefabSource.transform.localPosition,
-						prefabSource.transform.localRotation,
-						prefabSource.transform.localScale).inverse;
-
-				// Factor in the additional-transformation.
-				instantiationLocalToWorldMatrix = (
-					Matrix4x4.TRS(
-						prefabInstantiation.AdditionalTranslation,
-						prefabInstantiation.AdditionalRotation,
-						prefabInstantiation.AdditionalScaling) *
-					instantiationLocalToWorldMatrix);
-				
-				if (prefabInstantiation.InstanceParent != null)
+				// We'll build up the matrix from the leaf-transform back to the root.
+				Matrix4x4 instantiationLocalToWorldMatrix;
 				{
-					// NOTE: The previewer and instanceParent must either both be 
-					// instantiated (aka. in-scene), or both be within the same prefab. 
-					// In either case it means it's possible to compare their matrices.
-					Matrix4x4 previewerToInstanceParentMatrix = (
-						previewer.transform.localToWorldMatrix.inverse *
-						prefabInstantiation.InstanceParent.localToWorldMatrix);
+					Vector3 filteredPrefabLocalPosition =
+						((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabPosition) != 0) ?
+							Vector3.zero :
+							prefabSource.transform.localPosition;
+				
+					Quaternion filteredPrefabLocalRotation =
+						((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabRotation) != 0) ?
+							Quaternion.identity :
+							prefabSource.transform.localRotation;
+				
+					Vector3 filteredPrefabLocalScale =
+						((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabScale) != 0) ?
+							Vector3.one :
+							prefabSource.transform.localScale;
 
+					// NOTE: It's confusing as hell, but we're first undoing the 
+					// prefab's local transform, and then redoing the parts of it
+					// we actually want. This is frankly easier than decomposing the 
+					// transform and then just applying the portions we actually want included.
+					instantiationLocalToWorldMatrix =
+						Matrix4x4.TRS(
+							filteredPrefabLocalPosition,
+							filteredPrefabLocalRotation,
+							filteredPrefabLocalScale) *
+						Matrix4x4.TRS(
+							prefabSource.transform.localPosition,
+							prefabSource.transform.localRotation,
+							prefabSource.transform.localScale).inverse;
+
+					// Factor in the additional-transformation.
 					instantiationLocalToWorldMatrix = (
-						simulatedPreviewerLocalToWorldMatrix *
-						previewerToInstanceParentMatrix * 
+						Matrix4x4.TRS(
+							prefabInstantiation.AdditionalTranslation,
+							prefabInstantiation.AdditionalRotation,
+							prefabInstantiation.AdditionalScaling) *
 						instantiationLocalToWorldMatrix);
-				}
-				else
-				{
-					// Since the instantiation is apparently a root-object, we're already
-					// done because it's rejecting the heirarchy's simulated-previewer transform.
-				}
-			}
+				
+					if (prefabInstantiation.InstanceParent != null)
+					{
+						// NOTE: The previewer and instanceParent must either both be 
+						// instantiated (aka. in-scene), or both be within the same prefab. 
+						// In either case it means it's possible to compare their matrices.
+						Matrix4x4 previewerToInstanceParentMatrix = (
+							previewer.transform.localToWorldMatrix.inverse *
+							prefabInstantiation.InstanceParent.localToWorldMatrix);
 
-			List<MeshPreview> meshPreviews = new List<MeshPreview>();
+						instantiationLocalToWorldMatrix = (
+							simulatedPreviewerLocalToWorldMatrix *
+							previewerToInstanceParentMatrix * 
+							instantiationLocalToWorldMatrix);
+					}
+					else
+					{
+						// Since the instantiation is apparently a root-object, we're already
+						// done because it's rejecting the heirarchy's simulated-previewer transform.
+					}
+				}
 
-			foreach (MeshRenderer meshRenderer in prefabSource.GetComponentsInChildren<MeshRenderer>(includeInactive: true))
-			{
-				meshPreviews.Add(new MeshPreview()
+				List<MeshPreview> meshPreviews = new List<MeshPreview>();
+
+				foreach (MeshRenderer meshRenderer in prefabSource.GetComponentsInChildren<MeshRenderer>(includeInactive: true))
 				{
-					Mesh = meshRenderer.GetComponent<MeshFilter>().sharedMesh,
-					LocalToMeshMatrix = (instantiationLocalToWorldMatrix * meshRenderer.transform.localToWorldMatrix),
-					Materials = new List<Material>(meshRenderer.sharedMaterials),
+					if (meshRenderer.enabled)
+					{
+						meshPreviews.Add(new MeshPreview()
+						{
+							Mesh = meshRenderer.GetComponent<MeshFilter>().sharedMesh,
+							LocalToMeshMatrix = (instantiationLocalToWorldMatrix * meshRenderer.transform.localToWorldMatrix),
+							Materials = new List<Material>(meshRenderer.sharedMaterials),
+						});
+					}
+				}
+
+				inoutPrefabPreviews.Add(new PrefabPreview()
+				{
+					SourcePrefab = prefabInstantiation.Prefab,
+					MeshPreviews = meshPreviews,
 				});
-			}
 
-			inoutPrefabPreviews.Add(new PrefabPreview()
-			{
-				SourcePrefab = prefabInstantiation.Prefab,
-				MeshPreviews = meshPreviews,
-			});
-
-			foreach (InstantiationPreviewer childPreviewer in prefabSource.GetComponentsInChildren<InstantiationPreviewer>())
-			{
-				// NOTE: We're not checking activeInHierarchy because
-				// it returns false for prefabs that are not in a scene.
-				if (childPreviewer.enabled &&
-					childPreviewer.gameObject.activeSelf)
+				foreach (InstantiationPreviewer childPreviewer in prefabSource.GetComponentsInChildren<InstantiationPreviewer>())
 				{
 					AppendPreviewNodesRecursive(
 						childPreviewer,

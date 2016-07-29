@@ -41,17 +41,17 @@ public class PrefabInstantiator : MonoBehaviour
 #if UNITY_EDITOR
 	public void OnValidate()
 	{
-		UpdateInstantiationPreview();
+		UpdateInstantiationPreview("validation");
 	}
 
 	public void OnEnable()
 	{
-		UpdateInstantiationPreview();
+		UpdateInstantiationPreview("enabled");
 	}
 
 	public void OnDisable()
 	{
-		UpdateInstantiationPreview();
+		UpdateInstantiationPreview("disabled");
 	}
 
 	[PostProcessScene]
@@ -85,7 +85,9 @@ public class PrefabInstantiator : MonoBehaviour
 		if (DebugEnabled)
 		{
 			Debug.LogFormat(
-				"Attempting instantiation. (enabled=[{0}]) (Prefab=[{1}])",
+				"[{0}].[{1}] Attempting instantiation. Enabled=[{2}]. Prefab=[{3}].",
+				gameObject.name,
+				this.GetType().Name,
 				enabled,
 				(Prefab ? Prefab.name : "<null>"));
 		}
@@ -118,8 +120,18 @@ public class PrefabInstantiator : MonoBehaviour
 		return result;
 	}
 
-	private void UpdateInstantiationPreview()
+	private void UpdateInstantiationPreview(
+		string debugUpdateReason)
 	{
+		if (DebugEnabled)
+		{
+			Debug.LogFormat(
+				"[{0}].[{1}] Updating instantiation-preview. Reason=[{2}].",
+				gameObject.name,
+				this.GetType().Name,
+				debugUpdateReason);
+		}
+
 		var instantiationPreviewer = GetComponent<InstantiationPreviewer>();
 
 		instantiationPreviewer.ClearInstantiationPreviewsForSource(this);

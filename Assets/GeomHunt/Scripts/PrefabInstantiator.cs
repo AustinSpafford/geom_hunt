@@ -14,6 +14,8 @@ public class PrefabInstantiator : MonoBehaviour
 {
 	public GameObject Prefab = null;
 
+	public bool IgnorePrefabsLocalPosition = true;
+
 	public Vector3 AdditionalTranslation = Vector3.zero;
 	public Vector3 AdditionalRotation = Vector3.zero;
 	public Vector3 AdditionalScaling = Vector3.one;
@@ -96,9 +98,16 @@ public class PrefabInstantiator : MonoBehaviour
 			
 			result.transform.parent = transform;
 
-			result.transform.localPosition = (Prefab.transform.localPosition + AdditionalTranslation);
-			result.transform.localRotation = (Quaternion.Euler(AdditionalRotation) * Prefab.transform.localRotation);
-			result.transform.localScale = Vector3.Scale(Prefab.transform.localScale, AdditionalScaling);
+			result.transform.localPosition = (
+				(IgnorePrefabsLocalPosition ? Vector3.zero : Prefab.transform.localPosition) + 
+				AdditionalTranslation);
+
+			result.transform.localRotation = (
+				Quaternion.Euler(AdditionalRotation) * 
+				Prefab.transform.localRotation);
+
+			result.transform.localScale = 
+				Vector3.Scale(Prefab.transform.localScale, AdditionalScaling);
 		}
 
 		return result;
@@ -113,10 +122,18 @@ public class PrefabInstantiator : MonoBehaviour
 		if (enabled &&
 			(Prefab != null))
 		{
+			var previewFlags = InstantiationPreviewer.PreviewFlags.None;
+
+			if (IgnorePrefabsLocalPosition)
+			{
+				previewFlags |= InstantiationPreviewer.PreviewFlags.IgnorePrefabPosition;
+			}
+
 			instantiationPreviewer.AddInstantiationPreviewWithAdditionalTransformation(
 				this,
 				Prefab,
 				transform,
+				previewFlags,
 				AdditionalTranslation,
 				Quaternion.Euler(AdditionalRotation),
 				AdditionalScaling);

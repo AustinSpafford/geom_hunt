@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123686}
   m_LocalRotation: {x: -0.32620963, y: 0, z: 0, w: 0.9452975}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.983, z: 0}
   m_LocalScale: {x: 0.5652182, y: 0.5652182, z: 0.5652182}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,9 +77,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 198504, guid: 7c858cd14203eb9479dfda830017789f, type: 2}
+  IgnorePrefabsLocalPosition: 1
   AdditionalTranslation: {x: 0, y: 1.2, z: 0}
   AdditionalRotation: {x: 0, y: 0, z: 0}
   AdditionalScaling: {x: 2, y: 2, z: 2}
+  BakeInstantiationWhenPossible: 1
+  DebugEnabled: 0
 --- !u!114 &11446204
 MonoBehaviour:
   m_ObjectHideFlags: 1

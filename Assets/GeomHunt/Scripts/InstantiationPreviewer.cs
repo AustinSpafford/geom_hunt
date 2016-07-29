@@ -15,18 +15,27 @@ using UnityEditor;
 [DisallowMultipleComponent] // This component already facilitates multiple siblings.
 public class InstantiationPreviewer : MonoBehaviour
 {
+	[Flags]
+	public enum PreviewFlags
+	{
+		None = 0,
+		IgnorePrefabPosition = (1 << 0),
+	}
+
 	public bool DebugEnabled = false;
 
 #if UNITY_EDITOR
 	public void AddInstantiationPreview(
 		Component instantiator,
 		GameObject prefab,
-		Transform instanceParent)
+		Transform instanceParent,
+		PreviewFlags previewFlags)
 	{
 		AddInstantiationPreviewWithAdditionalTransformation(
 			instantiator,
 			prefab,
 			instanceParent,
+			previewFlags,
 			Vector3.zero, // additionalTranslation
 			Quaternion.identity, // additionalRotation
 			Vector3.one); // additionalScaling
@@ -36,6 +45,7 @@ public class InstantiationPreviewer : MonoBehaviour
 		Component instantiator,
 		GameObject prefab,
 		Transform instanceParent,
+		PreviewFlags previewFlags,
 		Vector3 additionalTranslation,
 		Quaternion additionalRotation,
 		Vector3 additionalScaling)
@@ -45,6 +55,7 @@ public class InstantiationPreviewer : MonoBehaviour
 			Instantiator = instantiator,
 			Prefab = prefab,
 			InstanceParent = instanceParent,
+			Flags = previewFlags,
 			AdditionalTranslation = additionalTranslation,
 			AdditionalRotation = additionalRotation,
 			AdditionalScaling = additionalScaling,
@@ -180,6 +191,8 @@ public class InstantiationPreviewer : MonoBehaviour
 
 		public Transform InstanceParent;
 
+		public PreviewFlags Flags;
+
 		public Vector3 AdditionalTranslation;
 		public Quaternion AdditionalRotation;
 		public Vector3 AdditionalScaling;
@@ -257,11 +270,27 @@ public class InstantiationPreviewer : MonoBehaviour
 
 			Matrix4x4 instantiationLocalToWorldMatrix;
 			{
-				Matrix4x4 instantiationAdditionMatrix = 
+				// We'll build up the matrix from the leaf-transform back to the root.
+				instantiationLocalToWorldMatrix = Matrix4x4.identity;
+
+				// If the instantiator intends to ignore the prefab's (bothersome) localPosition.
+				if ((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabPosition) != 0)
+				{
+					instantiationLocalToWorldMatrix = (
+						Matrix4x4.TRS(
+							(-1 * prefabSource.transform.localPosition),
+							Quaternion.identity,
+							Vector3.one) *
+						instantiationLocalToWorldMatrix);
+				}
+
+				// Factor in the additional-transformation.
+				instantiationLocalToWorldMatrix = (
 					Matrix4x4.TRS(
 						prefabInstantiation.AdditionalTranslation,
 						prefabInstantiation.AdditionalRotation,
-						prefabInstantiation.AdditionalScaling);
+						prefabInstantiation.AdditionalScaling) *
+					instantiationLocalToWorldMatrix);
 				
 				if (prefabInstantiation.InstanceParent != null)
 				{
@@ -275,13 +304,12 @@ public class InstantiationPreviewer : MonoBehaviour
 					instantiationLocalToWorldMatrix = (
 						simulatedPreviewerLocalToWorldMatrix *
 						previewerToInstanceParentMatrix * 
-						instantiationAdditionMatrix);
+						instantiationLocalToWorldMatrix);
 				}
 				else
 				{
-					// Since the instantiation is apparently a root-object, completely
-					// reject the heirarchy built up so far.
-					instantiationLocalToWorldMatrix = instantiationAdditionMatrix;
+					// Since the instantiation is apparently a root-object, we're already
+					// done because it's rejecting the heirarchy's simulated-previewer transform.
 				}
 			}
 

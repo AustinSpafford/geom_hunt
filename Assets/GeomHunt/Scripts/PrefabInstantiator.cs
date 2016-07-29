@@ -14,13 +14,16 @@ public class PrefabInstantiator : MonoBehaviour
 {
 	public GameObject Prefab = null;
 
-	public bool IgnorePrefabsLocalPosition = true;
-
 	public Vector3 AdditionalTranslation = Vector3.zero;
 	public Vector3 AdditionalRotation = Vector3.zero;
 	public Vector3 AdditionalScaling = Vector3.one;
 
+	[Tooltip("When enabled and the instantiator's host object is within the scene hierarchy, hitting Play or Build will immediately instantiate the prefab. Otherwise instantiation occurs when the script Starts (creating a delay).")]
 	public bool BakeInstantiationWhenPossible = true;
+
+	public bool IgnorePrefabsLocalPosition = true;
+	public bool IgnorePrefabsLocalRotation = false;
+	public bool IgnorePrefabsLocalScale = false;
 
 	public bool DebugEnabled = false;
 
@@ -104,10 +107,12 @@ public class PrefabInstantiator : MonoBehaviour
 
 			result.transform.localRotation = (
 				Quaternion.Euler(AdditionalRotation) * 
-				Prefab.transform.localRotation);
+				(IgnorePrefabsLocalRotation ? Quaternion.identity : Prefab.transform.localRotation));
 
 			result.transform.localScale = 
-				Vector3.Scale(Prefab.transform.localScale, AdditionalScaling);
+				Vector3.Scale(
+					(IgnorePrefabsLocalScale ? Vector3.one : Prefab.transform.localScale), 
+					AdditionalScaling);
 		}
 
 		return result;
@@ -122,12 +127,10 @@ public class PrefabInstantiator : MonoBehaviour
 		if (enabled &&
 			(Prefab != null))
 		{
-			var previewFlags = InstantiationPreviewer.PreviewFlags.None;
-
-			if (IgnorePrefabsLocalPosition)
-			{
-				previewFlags |= InstantiationPreviewer.PreviewFlags.IgnorePrefabPosition;
-			}
+			var previewFlags = (
+				(IgnorePrefabsLocalPosition ? InstantiationPreviewer.PreviewFlags.IgnorePrefabPosition : 0) |
+				(IgnorePrefabsLocalRotation ? InstantiationPreviewer.PreviewFlags.IgnorePrefabRotation : 0) |
+				(IgnorePrefabsLocalScale ? InstantiationPreviewer.PreviewFlags.IgnorePrefabScale : 0));
 
 			instantiationPreviewer.AddInstantiationPreviewWithAdditionalTransformation(
 				this,

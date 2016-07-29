@@ -20,6 +20,8 @@ public class InstantiationPreviewer : MonoBehaviour
 	{
 		None = 0,
 		IgnorePrefabPosition = (1 << 0),
+		IgnorePrefabRotation = (1 << 1),
+		IgnorePrefabScale = (1 << 2),
 	}
 
 	public bool DebugEnabled = false;
@@ -267,22 +269,38 @@ public class InstantiationPreviewer : MonoBehaviour
 		foreach (PrefabInstantiation prefabInstantiation in previewer.prefabInstantiations)
 		{
 			GameObject prefabSource = prefabInstantiation.Prefab;
-
+			
+			// We'll build up the matrix from the leaf-transform back to the root.
 			Matrix4x4 instantiationLocalToWorldMatrix;
 			{
-				// We'll build up the matrix from the leaf-transform back to the root.
-				instantiationLocalToWorldMatrix = Matrix4x4.identity;
+				Vector3 filteredPrefabLocalPosition =
+					((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabPosition) != 0) ?
+						Vector3.zero :
+						prefabSource.transform.localPosition;
+				
+				Quaternion filteredPrefabLocalRotation =
+					((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabRotation) != 0) ?
+						Quaternion.identity :
+						prefabSource.transform.localRotation;
+				
+				Vector3 filteredPrefabLocalScale =
+					((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabScale) != 0) ?
+						Vector3.one :
+						prefabSource.transform.localScale;
 
-				// If the instantiator intends to ignore the prefab's (bothersome) localPosition.
-				if ((prefabInstantiation.Flags & PreviewFlags.IgnorePrefabPosition) != 0)
-				{
-					instantiationLocalToWorldMatrix = (
-						Matrix4x4.TRS(
-							(-1 * prefabSource.transform.localPosition),
-							Quaternion.identity,
-							Vector3.one) *
-						instantiationLocalToWorldMatrix);
-				}
+				// NOTE: It's confusing as hell, but we're first undoing the 
+				// prefab's local transform, and then redoing the parts of it
+				// we actually want. This is frankly easier than decomposing the 
+				// transform and then just applying the portions we actually want included.
+				instantiationLocalToWorldMatrix =
+					Matrix4x4.TRS(
+						filteredPrefabLocalPosition,
+						filteredPrefabLocalRotation,
+						filteredPrefabLocalScale) *
+					Matrix4x4.TRS(
+						prefabSource.transform.localPosition,
+						prefabSource.transform.localRotation,
+						prefabSource.transform.localScale).inverse;
 
 				// Factor in the additional-transformation.
 				instantiationLocalToWorldMatrix = (
@@ -313,22 +331,22 @@ public class InstantiationPreviewer : MonoBehaviour
 				}
 			}
 
-			List<MeshPreview> nodeMeshPreviews = new List<MeshPreview>();
+			List<MeshPreview> meshPreviews = new List<MeshPreview>();
 
-			foreach (MeshRenderer nodeRenderer in prefabSource.GetComponentsInChildren<MeshRenderer>(includeInactive: true))
+			foreach (MeshRenderer meshRenderer in prefabSource.GetComponentsInChildren<MeshRenderer>(includeInactive: true))
 			{
-				nodeMeshPreviews.Add(new MeshPreview()
+				meshPreviews.Add(new MeshPreview()
 				{
-					Mesh = nodeRenderer.GetComponent<MeshFilter>().sharedMesh,
-					LocalToMeshMatrix = (instantiationLocalToWorldMatrix * nodeRenderer.transform.localToWorldMatrix),
-					Materials = new List<Material>(nodeRenderer.sharedMaterials),
+					Mesh = meshRenderer.GetComponent<MeshFilter>().sharedMesh,
+					LocalToMeshMatrix = (instantiationLocalToWorldMatrix * meshRenderer.transform.localToWorldMatrix),
+					Materials = new List<Material>(meshRenderer.sharedMaterials),
 				});
 			}
 
 			inoutPrefabPreviews.Add(new PrefabPreview()
 			{
 				SourcePrefab = prefabInstantiation.Prefab,
-				MeshPreviews = nodeMeshPreviews,
+				MeshPreviews = meshPreviews,
 			});
 
 			foreach (InstantiationPreviewer childPreviewer in prefabSource.GetComponentsInChildren<InstantiationPreviewer>())

@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3375800}
   - 65: {fileID: 6538158}
   - 23: {fileID: 2328138}
+  - 114: {fileID: 11426472}
   - 114: {fileID: 11407124}
   m_Layer: 0
   m_Name: prefab_test_3
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0110521, y: 1.521621, z: -2.111}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,7 +89,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 170598, guid: 36ab9e2556e32dd408e36dabb011b6a9, type: 2}
-  Instantiation: 0
+  AdditionalTranslation: {x: 0, y: 0, z: 0}
+  AdditionalRotation: {x: 0, y: 0, z: 0}
+  AdditionalScaling: {x: 1, y: 1, z: 1}
+--- !u!114 &11426472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

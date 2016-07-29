@@ -11,7 +11,8 @@ GameObject:
   - 33: {fileID: 3324416}
   - 135: {fileID: 13586664}
   - 23: {fileID: 2337778}
-  - 114: {fileID: 11447742}
+  - 114: {fileID: 11473746}
+  - 114: {fileID: 11444082}
   m_Layer: 0
   m_Name: prefab_test_2
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0110521, y: 1.521621, z: 1.95}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3888634, y: 1.3888632, z: 1.3888632}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +65,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170598}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11447742
+--- !u!114 &11444082
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -76,7 +77,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 123686, guid: 675c3ac53e61a514faf19764a73d15e5, type: 2}
-  Instantiation: 0
+  AdditionalTranslation: {x: 0, y: 0.5, z: 0}
+  AdditionalRotation: {x: 0, y: 0, z: 0}
+  AdditionalScaling: {x: 1, y: 1, z: 1}
+--- !u!114 &11473746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
 --- !u!135 &13586664
 SphereCollider:
   m_ObjectHideFlags: 1

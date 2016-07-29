@@ -17,6 +17,21 @@ public class PrefabInstantiator : MonoBehaviour
 	public Vector3 AdditionalTranslation = Vector3.zero;
 	public Vector3 AdditionalRotation = Vector3.zero;
 	public Vector3 AdditionalScaling = Vector3.one;
+
+	public bool BakeInstantiationWhenPossible = true;
+
+	public bool DebugEnabled = false;
+
+	public void Start()
+	{
+		// If we're either a runtime-only (non-baking) instantiator, or the
+		// host object was dynamically instantiated (rather than pre-existing in the scene), 
+		// proceed with instantiation.
+		if (EditorApplication.isPlaying)
+		{
+			TryInstantiatePrefab();
+		}
+	}
 	
 #if UNITY_EDITOR
 	public void OnValidate()
@@ -37,38 +52,38 @@ public class PrefabInstantiator : MonoBehaviour
 	[PostProcessScene]
 	public static void OnPostprocessScene()
 	{
-		var unvisitedSubstitutions = new Stack<PrefabInstantiator>(FindObjectsOfType<PrefabInstantiator>());
-		var garbageSubstitutions = new List<PrefabInstantiator>();
+		var unvisitedInstantiators = new Stack<PrefabInstantiator>(FindObjectsOfType<PrefabInstantiator>());
 
-		while (unvisitedSubstitutions.Count > 0)
+		while (unvisitedInstantiators.Count > 0)
 		{
-			PrefabInstantiator currentSubstitution = unvisitedSubstitutions.Pop();
+			PrefabInstantiator currentInstantiator = unvisitedInstantiators.Pop();
 			
-			GameObject instantiatedPrefab = currentSubstitution.TryInstantiatePrefab();
-			
-			if (instantiatedPrefab)
+			if (currentInstantiator.BakeInstantiationWhenPossible)
 			{
-				foreach (PrefabInstantiator newSubstitution in instantiatedPrefab.GetComponentsInChildren<PrefabInstantiator>())
+				GameObject instantiatedPrefab = currentInstantiator.TryInstantiatePrefab();
+			
+				if (instantiatedPrefab)
 				{
-					unvisitedSubstitutions.Push(newSubstitution);
+					foreach (PrefabInstantiator newSubstitution in instantiatedPrefab.GetComponentsInChildren<PrefabInstantiator>())
+					{
+						unvisitedInstantiators.Push(newSubstitution);
+					}
 				}
 			}
-
-			garbageSubstitutions.Add(currentSubstitution);
-		}
-
-		// Clean up all of the substitutions.
-		for (int index = 0;
-			index < garbageSubstitutions.Count;
-			++index)
-		{
-			Destroy(garbageSubstitutions[index]);
 		}
 	}
 
 	private GameObject TryInstantiatePrefab()
 	{
 		GameObject result = null;
+
+		if (DebugEnabled)
+		{
+			Debug.LogFormat(
+				"Attempting instantiation. (enabled=[{0}]) (Prefab=[{1}])",
+				enabled,
+				(Prefab ? Prefab.name : "<null>"));
+		}
 
 		if (enabled &&
 			(Prefab != null))

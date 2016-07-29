@@ -39,19 +39,14 @@ public class PrefabInstantiator : MonoBehaviour
 	}
 	
 #if UNITY_EDITOR
-	public void OnValidate()
-	{
-		UpdateInstantiationPreview("validation");
-	}
-
 	public void OnEnable()
 	{
 		UpdateInstantiationPreview("enabled");
 	}
 
-	public void OnDisable()
+	public void OnValidate()
 	{
-		UpdateInstantiationPreview("disabled");
+		UpdateInstantiationPreview("validation");
 	}
 
 	[PostProcessScene]
@@ -135,9 +130,8 @@ public class PrefabInstantiator : MonoBehaviour
 		var instantiationPreviewer = GetComponent<InstantiationPreviewer>();
 
 		instantiationPreviewer.ClearInstantiationPreviewsForSource(this);
-
-		if (enabled &&
-			(Prefab != null))
+		
+		if (Prefab != null)
 		{
 			var previewFlags = (
 				(IgnorePrefabsLocalPosition ? InstantiationPreviewer.PreviewFlags.IgnorePrefabPosition : 0) |

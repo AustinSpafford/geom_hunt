@@ -96,7 +96,7 @@ MonoBehaviour:
   IgnorePrefabsLocalPosition: 1
   IgnorePrefabsLocalRotation: 0
   IgnorePrefabsLocalScale: 0
-  DebugEnabled: 1
+  DebugEnabled: 0
 --- !u!114 &11426472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugEnabled: 1
+  DebugEnabled: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

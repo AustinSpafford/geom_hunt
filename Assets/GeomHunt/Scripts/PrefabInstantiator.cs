@@ -94,7 +94,15 @@ public class PrefabInstantiator : MonoBehaviour
 			// we'll disable ourselves in case the call stack winds its way back to us.
 			enabled = false;
 
+			bool prefabWasActive = Prefab.activeSelf;
+
+			// We need to temporarily disable the prefab to prevent its instantiation
+			// from waking/starting before we assign it to its parent.
+			Prefab.SetActive(false);
+
 			result = PrefabUtility.InstantiatePrefab(Prefab) as GameObject;
+
+			Prefab.SetActive(prefabWasActive);
 			
 			result.transform.parent = transform;
 
@@ -110,6 +118,8 @@ public class PrefabInstantiator : MonoBehaviour
 				Vector3.Scale(
 					(IgnorePrefabsLocalScale ? Vector3.one : Prefab.transform.localScale), 
 					AdditionalScaling);
+
+			result.SetActive(prefabWasActive);
 		}
 
 		return result;

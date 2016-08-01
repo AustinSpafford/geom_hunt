@@ -219,7 +219,6 @@ public class InstantiationPreviewer : MonoBehaviour
 
 	private bool cacheIsValid = false;
 
-	[System.NonSerialized]
 	private List<PrefabPreview> cachedPrefabPreviewRoots = new List<PrefabPreview>();
 
 	private IEnumerable<MeshPreview> GetVisibleMeshPreviews()

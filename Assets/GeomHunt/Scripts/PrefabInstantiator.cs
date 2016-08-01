@@ -13,10 +13,14 @@ using UnityEditor.Callbacks;
 public class PrefabInstantiator : MonoBehaviour
 {
 	public GameObject Prefab = null;
+	
+	[Space(10)]
 
 	public Vector3 AdditionalTranslation = Vector3.zero;
 	public Vector3 AdditionalRotation = Vector3.zero;
 	public Vector3 AdditionalScaling = Vector3.one;
+	
+	[Space(10)]
 
 	[Tooltip("When enabled and the instantiator's host object is within the scene hierarchy, hitting Play or Build will immediately instantiate the prefab. Otherwise instantiation occurs when the script Starts (creating a delay).")]
 	public bool BakeInstantiationWhenPossible = true;
@@ -24,6 +28,8 @@ public class PrefabInstantiator : MonoBehaviour
 	public bool IgnorePrefabsLocalPosition = true;
 	public bool IgnorePrefabsLocalRotation = false;
 	public bool IgnorePrefabsLocalScale = false;
+	
+	[Space(10)]
 
 	public bool DebugEnabled = false;
 

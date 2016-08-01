@@ -32,7 +32,7 @@ public class PrefabInstantiator : MonoBehaviour
 		// If we're either a runtime-only (non-baking) instantiator, or the
 		// host object was dynamically instantiated (rather than pre-existing in the scene), 
 		// proceed with instantiation.
-		if (EditorApplication.isPlaying)
+		if (Application.isPlaying)
 		{
 			TryInstantiatePrefab();
 		}
@@ -48,7 +48,9 @@ public class PrefabInstantiator : MonoBehaviour
 	{
 		UpdateInstantiationPreview("validation");
 	}
-
+#endif // UNITY_EDITOR
+	
+#if UNITY_EDITOR
 	[PostProcessScene]
 	public static void OnPostprocessScene()
 	{
@@ -72,6 +74,7 @@ public class PrefabInstantiator : MonoBehaviour
 			}
 		}
 	}
+#endif // UNITY_EDITOR
 
 	private GameObject TryInstantiatePrefab()
 	{
@@ -100,7 +103,7 @@ public class PrefabInstantiator : MonoBehaviour
 			// from waking/starting before we assign it to its parent.
 			Prefab.SetActive(false);
 
-			result = PrefabUtility.InstantiatePrefab(Prefab) as GameObject;
+			result = GameObject.Instantiate<GameObject>(Prefab);
 
 			Prefab.SetActive(prefabWasActive);
 			
@@ -124,7 +127,8 @@ public class PrefabInstantiator : MonoBehaviour
 
 		return result;
 	}
-
+	
+#if UNITY_EDITOR
 	private void UpdateInstantiationPreview(
 		string debugUpdateReason)
 	{

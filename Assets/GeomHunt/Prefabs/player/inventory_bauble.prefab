@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11432558}
   - 114: {fileID: 11494374}
   m_Layer: 0
-  m_Name: doppelgang_victim_root
+  m_Name: doppelgang_target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,13 +25,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 439996}
-  - 114: {fileID: 11443896}
-  - 114: {fileID: 11459818}
-  - 135: {fileID: 13552896}
-  - 33: {fileID: 3393276}
-  - 23: {fileID: 2318754}
-  - 114: {fileID: 11424716}
-  - 114: {fileID: 11413862}
+  - 114: {fileID: 11433040}
+  - 114: {fileID: 11485060}
+  - 135: {fileID: 13507232}
+  - 33: {fileID: 3390218}
+  - 23: {fileID: 2366850}
+  - 114: {fileID: 11467086}
+  - 114: {fileID: 11480358}
   m_Layer: 0
   m_Name: inventory_bauble
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.107, y: 1.404, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 461524}
@@ -93,7 +93,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 461524}
   m_RootOrder: 0
---- !u!23 &2318754
+--- !u!23 &2366850
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -119,14 +119,64 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3393276
+--- !u!33 &3390218
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144332}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11413862
+--- !u!114 &11432558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c47345c3c1fb8f4fbedc688ec03a2c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11433040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c085692501653534c8867939200c1ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Condition:
+    Clauses: []
+  DebugEnabled: 0
+--- !u!114 &11442196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f94101fb27411a408bc553defd08fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalRotationAxis: {x: 0, y: 1, z: 0}
+  DegreesPerSecond: 30
+--- !u!114 &11467086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a31a803bf366864f85790311a1bcba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
+--- !u!114 &11480358
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -140,60 +190,7 @@ MonoBehaviour:
   SpawneePrefab: {fileID: 0}
   SpawneeParent: {fileID: 0}
   ForwardClickToSpawnee: 1
---- !u!114 &11424716
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a31a803bf366864f85790311a1bcba2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugEnabled: 0
---- !u!114 &11432558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c47345c3c1fb8f4fbedc688ec03a2c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11442196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 185950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f94101fb27411a408bc553defd08fd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotationAxis: {x: 0, y: 1, z: 0}
-  DegreesPerSecond: 30
---- !u!114 &11443896
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c085692501653534c8867939200c1ebb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConditionClauses:
-  - ProgressName: 
-    Comparitor: 1
-    ProgressValue: 0
-    Concatenator: 0
-  DebugEnabled: 0
---- !u!114 &11459818
+--- !u!114 &11485060
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -204,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63facedef079816439c9a0d0c5ac63ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VictimObject: {fileID: 101590}
+  TargetObject: {fileID: 101590}
   DoppelgangerMaterial: {fileID: 2100000, guid: 66bb644ac05c5c7438f83a1274c704f8,
     type: 2}
   Polarity: 0
@@ -220,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34351e0e9ff4b5f45a02e03426a9fe5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13552896
+--- !u!135 &13507232
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

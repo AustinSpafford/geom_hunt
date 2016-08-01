@@ -6,15 +6,15 @@ public class DoppelgangObjectOnProgressCondition : MonoBehaviour
 {
 	public enum ConditionPolarity
 	{
-		ShowVictimWhenConditionIsTrue,
+		ShowTargetWhenConditionIsTrue,
 		ShowDoppelgangerWhenConditionIsTrue,
 	}
 
-	public GameObject VictimObject = null;
+	public GameObject TargetObject = null;
 
 	public Material DoppelgangerMaterial = null;
 
-	public ConditionPolarity Polarity = ConditionPolarity.ShowVictimWhenConditionIsTrue;
+	public ConditionPolarity Polarity = ConditionPolarity.ShowTargetWhenConditionIsTrue;
 
 	public bool DebugEnabled = false;
 
@@ -43,7 +43,7 @@ public class DoppelgangObjectOnProgressCondition : MonoBehaviour
 
 	private void UpdateDoppelgangerExistence()
 	{
-		if ((VictimObject != null) &&
+		if ((TargetObject != null) &&
 			(progressCondition != null))
 		{
 			bool doppelgangerShouldBeActive;
@@ -54,7 +54,7 @@ public class DoppelgangObjectOnProgressCondition : MonoBehaviour
 					doppelgangerShouldBeActive = progressCondition.ConditionIsTrue;
 					break;
 					
-				case ConditionPolarity.ShowVictimWhenConditionIsTrue:
+				case ConditionPolarity.ShowTargetWhenConditionIsTrue:
 					doppelgangerShouldBeActive = (progressCondition.ConditionIsTrue == false);
 					break;
 
@@ -64,13 +64,13 @@ public class DoppelgangObjectOnProgressCondition : MonoBehaviour
 
 			if (doppelgangerShouldBeActive && (doppelgangerInstance == null))
 			{
-				doppelgangerInstance = GameObject.Instantiate(VictimObject);
+				doppelgangerInstance = GameObject.Instantiate(TargetObject);
 
-				doppelgangerInstance.transform.parent = VictimObject.transform.parent;
+				doppelgangerInstance.transform.parent = TargetObject.transform.parent;
 
-				doppelgangerInstance.transform.localPosition = VictimObject.transform.localPosition;
-				doppelgangerInstance.transform.localRotation= VictimObject.transform.localRotation;
-				doppelgangerInstance.transform.localScale = VictimObject.transform.localScale;
+				doppelgangerInstance.transform.localPosition = TargetObject.transform.localPosition;
+				doppelgangerInstance.transform.localRotation= TargetObject.transform.localRotation;
+				doppelgangerInstance.transform.localScale = TargetObject.transform.localScale;
 
 				if (DoppelgangerMaterial != null)
 				{
@@ -87,14 +87,14 @@ public class DoppelgangObjectOnProgressCondition : MonoBehaviour
 					}
 				}
 
-				// Hide the victim, as their doppelganger has taken their place.
-				VictimObject.SetActive(false);
+				// Hide the target, as their doppelganger has taken their place.
+				TargetObject.SetActive(false);
 			}
 			else if ((doppelgangerShouldBeActive == false) && (doppelgangerInstance != null))
 			{
 				Destroy(doppelgangerInstance);
 
-				VictimObject.SetActive(true);
+				TargetObject.SetActive(true);
 			}
 		}
 	}

@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 182884, guid: 1de28fecf7da9654fa753275fc46dec9, type: 2}
   AdditionalTranslation: {x: 0, y: 0, z: 0}
-  AdditionalRotation: {x: 0, y: 0, z: 0}
+  AdditionalRotation: {x: 90, y: 0, z: 0}
   AdditionalScaling: {x: 1, y: 1, z: 1}
   BakeInstantiationWhenPossible: 1
   IgnorePrefabsLocalPosition: 1

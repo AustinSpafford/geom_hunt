@@ -35,7 +35,13 @@ public class ProgressCondition : MonoBehaviour
 		public ConditionConcatenator Concatenator;
 	}
 
-	public ConditionClause[] ConditionClauses = new ConditionClause[0];
+	[System.Serializable]
+	public class ConditionExpression
+	{
+		public ConditionClause[] Clauses = new ConditionClause[0];
+	}
+
+	public ConditionExpression Condition = new ConditionExpression();
 
 	public bool ConditionIsTrue { get; private set; }
 
@@ -69,7 +75,7 @@ public class ProgressCondition : MonoBehaviour
 	{
 		bool changeRelatesToProgressCondition = false;
 
-		foreach (ConditionClause clause in ConditionClauses)
+		foreach (ConditionClause clause in Condition.Clauses)
 		{
 			if (clause.ProgressName == eventArgs.ProgressName)
 			{
@@ -97,13 +103,13 @@ public class ProgressCondition : MonoBehaviour
 		bool currentConditionEvaluation = true;
 	
 		// NOTE: Empty-conditions (no clauses) intentionally evaluate to true.	
-		if (ConditionClauses.Length > 0)
+		if (Condition.Clauses.Length > 0)
 		{
 			ConditionConcatenator lastConcatenator = ConditionConcatenator.And;
 
 			ProgressStorage progressStorage = ProgressStorage.LocalPlayerProgressStorage;
 
-			foreach (ConditionClause clause in ConditionClauses)
+			foreach (ConditionClause clause in Condition.Clauses)
 			{
 				if (string.IsNullOrEmpty(clause.ProgressName))
 				{

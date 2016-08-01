@@ -46,7 +46,7 @@ MonoBehaviour:
   AdditionalRotation: {x: 0, y: 0, z: 0}
   AdditionalScaling: {x: 1, y: 1, z: 1}
   BakeInstantiationWhenPossible: 1
-  IgnorePrefabsLocalPosition: 0
+  IgnorePrefabsLocalPosition: 1
   IgnorePrefabsLocalRotation: 0
   IgnorePrefabsLocalScale: 0
   DebugEnabled: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   AdditionalRotation: {x: 0, y: 0, z: 0}
   AdditionalScaling: {x: 1, y: 1, z: 1}
   BakeInstantiationWhenPossible: 1
-  IgnorePrefabsLocalPosition: 0
+  IgnorePrefabsLocalPosition: 1
   IgnorePrefabsLocalRotation: 0
   IgnorePrefabsLocalScale: 0
   DebugEnabled: 0

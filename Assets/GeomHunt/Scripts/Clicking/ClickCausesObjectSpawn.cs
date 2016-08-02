@@ -13,7 +13,14 @@ public class ClickCausesObjectSpawn : MonoBehaviour
 	public void OnClickBegin(
 		ClickSource clickSource)
 	{
-		if (SpawneePrefab != null)
+		var progressCondition = GetComponent<ProgressCondition>();
+
+		bool clickIsAccepted = (
+			(progressCondition == null) ||
+			progressCondition.ConditionIsTrue);
+
+		if (clickIsAccepted &&
+			(SpawneePrefab != null))
 		{
 			Vector3 spawneePosition = 
 				Vector3.Lerp(

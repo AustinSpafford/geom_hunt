@@ -15,11 +15,12 @@ public class HoverCausesColorFade : MonoBehaviour
 	public void Start()
 	{
 		clickTarget = gameObject.GetComponent<ClickTarget>();
-		renderer = gameObject.GetComponent<Renderer>();
+		rendererComponent = gameObject.GetComponent<Renderer>();
+		optionalProgressCondition = gameObject.GetComponent<ProgressCondition>();
 
-		if (renderer != null)
+		if (rendererComponent != null)
 		{
-			originalSharedMaterial = renderer.sharedMaterial;
+			originalSharedMaterial = rendererComponent.sharedMaterial;
 			originalColor = originalSharedMaterial.color;
 		}
 	}
@@ -41,7 +42,12 @@ public class HoverCausesColorFade : MonoBehaviour
 
 	public void Update()
 	{
-		if (clickTarget.IsHovered)
+		bool canAcceptHover = (
+			(optionalProgressCondition == null) ||
+			optionalProgressCondition.ConditionIsTrue);
+
+		if (clickTarget.IsHovered &&
+			canAcceptHover)
 		{
 			fadeFraction = 
 				Mathf.SmoothDamp(
@@ -76,7 +82,7 @@ public class HoverCausesColorFade : MonoBehaviour
 		{
 			fadeInstancedMaterial = new Material(originalSharedMaterial);
 
-			renderer.material = fadeInstancedMaterial;
+			rendererComponent.material = fadeInstancedMaterial;
 
 			if (DebugEnabled)
 			{
@@ -86,7 +92,7 @@ public class HoverCausesColorFade : MonoBehaviour
 		else if ((shouldHaveInstancedMaterial == false) &&
 			(fadeInstancedMaterial != null))
 		{
-			renderer.material = originalSharedMaterial;
+			rendererComponent.material = originalSharedMaterial;
 
 			Destroy(fadeInstancedMaterial);
 
@@ -109,7 +115,8 @@ public class HoverCausesColorFade : MonoBehaviour
 	}
 	
 	private ClickTarget clickTarget = null;
-	new private Renderer renderer = null;
+	private ProgressCondition optionalProgressCondition = null;
+	private Renderer rendererComponent = null; // NOTE: "renderer" is present but deprecated, and the "new" keyword generates a warning in release builds.
 
 	private Material originalSharedMaterial = null;
 	private Color originalColor = Color.white;

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e2d656a9de7d9e44383dfa9dc7c850e7
+timeCreated: 1470035247
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

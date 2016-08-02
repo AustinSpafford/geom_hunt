@@ -42,6 +42,7 @@ public class ClickSource : MonoBehaviour
 		trackedController.TriggerUnclicked -= OnTriggerUnclicked;
 
 		TryTerminateClick();
+		TryTerminateHover();
 	}
 
 	public void Update()
@@ -73,14 +74,7 @@ public class ClickSource : MonoBehaviour
 
 					if (raycastHitClickTarget != null)
 					{
-						currentHoverTarget = raycastHitClickTarget;
-
-						if (DebugEnabled)
-						{
-							Debug.LogFormat("Entering hover on <b>{0}</b>.", currentHoverTarget.name);
-						}
-
-						currentHoverTarget.EnterHoverScope();
+						TryBeginHoverOnTarget(raycastHitClickTarget);
 					}
 				}
 			}
@@ -113,7 +107,17 @@ public class ClickSource : MonoBehaviour
 		}
 	}
 
-	public bool TryClickHoverTarget()
+	public void ForceClickOnTarget(
+		ClickTarget target)
+	{
+		TryTerminateClick();
+		TryTerminateHover();
+
+		TryBeginHoverOnTarget(target);
+		TryBeginClickOnHoverTarget();
+	}
+
+	public bool TryBeginClickOnHoverTarget()
 	{
 		bool result = false;
 
@@ -179,6 +183,35 @@ public class ClickSource : MonoBehaviour
 
 		return result;
 	}
+	
+	private SteamVR_TrackedController trackedController = null;
+
+	private ClickTarget currentHoverTarget = null;
+	private ClickTarget currentClickTarget = null;
+
+	private bool TryBeginHoverOnTarget(
+		ClickTarget target)
+	{
+		bool result = false;
+
+		TryTerminateHover();
+
+		if (target != null)
+		{
+			currentHoverTarget = target;
+
+			if (DebugEnabled)
+			{
+				Debug.LogFormat("Entering hover on <b>{0}</b>.", currentHoverTarget.name);
+			}
+
+			currentHoverTarget.EnterHoverScope();
+
+			result = true;
+		}
+
+		return result;
+	}
 
 	private void OnTriggerClicked(
 		object sender,
@@ -188,7 +221,7 @@ public class ClickSource : MonoBehaviour
 		{
 			case InteractionMode.MomentaryClicks:
 			{
-				TryClickHoverTarget();
+				TryBeginClickOnHoverTarget();
 
 				break;
 			}
@@ -224,7 +257,7 @@ public class ClickSource : MonoBehaviour
 				// If this is the end of the first trigger-press.
 				if (currentClickTarget == null)
 				{
-					TryClickHoverTarget();
+					TryBeginClickOnHoverTarget();
 				}
 				else 
 				{
@@ -279,9 +312,4 @@ public class ClickSource : MonoBehaviour
 
 		return result;
 	}
-	
-	private SteamVR_TrackedController trackedController = null;
-
-	private ClickTarget currentHoverTarget = null;
-	private ClickTarget currentClickTarget = null;
 }

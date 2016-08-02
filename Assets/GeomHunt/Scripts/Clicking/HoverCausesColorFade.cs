@@ -16,6 +16,7 @@ public class HoverCausesColorFade : MonoBehaviour
 	{
 		clickTarget = gameObject.GetComponent<ClickTarget>();
 		rendererComponent = gameObject.GetComponent<Renderer>();
+		optionalProgressCondition = gameObject.GetComponent<ProgressCondition>();
 
 		if (rendererComponent != null)
 		{
@@ -41,7 +42,12 @@ public class HoverCausesColorFade : MonoBehaviour
 
 	public void Update()
 	{
-		if (clickTarget.IsHovered)
+		bool canAcceptHover = (
+			(optionalProgressCondition == null) ||
+			optionalProgressCondition.ConditionIsTrue);
+
+		if (clickTarget.IsHovered &&
+			canAcceptHover)
 		{
 			fadeFraction = 
 				Mathf.SmoothDamp(
@@ -109,6 +115,7 @@ public class HoverCausesColorFade : MonoBehaviour
 	}
 	
 	private ClickTarget clickTarget = null;
+	private ProgressCondition optionalProgressCondition = null;
 	private Renderer rendererComponent = null; // NOTE: "renderer" is present but deprecated, and the "new" keyword generates a warning in release builds.
 
 	private Material originalSharedMaterial = null;

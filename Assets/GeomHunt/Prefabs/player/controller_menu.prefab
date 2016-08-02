@@ -17,6 +17,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &112338
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 491700}
+  - 114: {fileID: 11455552}
+  - 114: {fileID: 11472944}
+  m_Layer: 0
+  m_Name: red_box_bauble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &116400
 GameObject:
   m_ObjectHideFlags: 1
@@ -28,7 +45,7 @@ GameObject:
   - 114: {fileID: 11447192}
   - 114: {fileID: 11495304}
   m_Layer: 0
-  m_Name: red_ball_bauble
+  m_Name: red_capsule_bauble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +65,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &127380
 GameObject:
   m_ObjectHideFlags: 1
@@ -60,7 +77,7 @@ GameObject:
   - 114: {fileID: 11414498}
   - 114: {fileID: 11454686}
   m_Layer: 0
-  m_Name: blue_ball_bauble
+  m_Name: blue_capsule_bauble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +145,7 @@ GameObject:
   - 114: {fileID: 11490510}
   - 114: {fileID: 11424906}
   m_Layer: 0
-  m_Name: green_ball_bauble
+  m_Name: green_capsule_bauble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,6 +163,23 @@ GameObject:
   - 114: {fileID: 11488360}
   m_Layer: 0
   m_Name: boxes_collection_concealer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &148956
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 489536}
+  - 114: {fileID: 11424374}
+  - 114: {fileID: 11419528}
+  m_Layer: 0
+  m_Name: yellow_box_bauble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,6 +224,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &153624
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474854}
+  - 114: {fileID: 11414836}
+  - 114: {fileID: 11453990}
+  m_Layer: 0
+  m_Name: green_box_bauble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &157194
 GameObject:
   m_ObjectHideFlags: 1
@@ -206,6 +257,40 @@ GameObject:
   - 114: {fileID: 11460798}
   m_Layer: 0
   m_Name: capsules_button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &164222
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 469352}
+  - 114: {fileID: 11428832}
+  - 114: {fileID: 11478142}
+  m_Layer: 0
+  m_Name: blue_box_bauble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &166734
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 459904}
+  - 114: {fileID: 11479312}
+  - 114: {fileID: 11462350}
+  m_Layer: 0
+  m_Name: blue_ball_bauble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &178254
 GameObject:
   m_ObjectHideFlags: 1
@@ -254,7 +339,7 @@ GameObject:
   - 114: {fileID: 11424288}
   - 114: {fileID: 11457856}
   m_Layer: 0
-  m_Name: yellow_ball_bauble
+  m_Name: yellow_capsule_bauble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,6 +376,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &183738
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 429952}
+  - 114: {fileID: 11409516}
+  - 114: {fileID: 11417220}
+  m_Layer: 0
+  m_Name: green_ball_bauble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &187872
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 463732}
+  - 114: {fileID: 11413494}
+  - 114: {fileID: 11470406}
+  m_Layer: 0
+  m_Name: red_ball_bauble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &188968
 GameObject:
   m_ObjectHideFlags: 1
@@ -304,6 +423,23 @@ GameObject:
   - 23: {fileID: 2392158}
   m_Layer: 0
   m_Name: menu_background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &198022
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 428472}
+  - 114: {fileID: 11435216}
+  - 114: {fileID: 11400480}
+  m_Layer: 0
+  m_Name: yellow_ball_bauble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,10 +476,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 0.32, z: 0}
+  m_LocalPosition: {x: 0.060000002, y: 0.308, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 490080}
+  m_Father: {fileID: 470198}
   m_RootOrder: 2
 --- !u!4 &422398
 Transform:
@@ -351,8 +487,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144580}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.028, z: 0}
+  m_LocalRotation: {x: -0.043619394, y: 0, z: 0, w: 0.99904823}
+  m_LocalPosition: {x: 0, y: -0.07, z: -0.025}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 412554}
@@ -369,9 +505,25 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 491700}
+  - {fileID: 469352}
+  - {fileID: 489536}
+  - {fileID: 474854}
   m_Father: {fileID: 439894}
   m_RootOrder: 0
+--- !u!4 &428472
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: 0.308, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 490080}
+  m_RootOrder: 2
 --- !u!4 &428770
 Transform:
   m_ObjectHideFlags: 1
@@ -387,6 +539,18 @@ Transform:
   - {fileID: 469620}
   m_Father: {fileID: 422398}
   m_RootOrder: 1
+--- !u!4 &429952
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.135, y: 0.211, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 490080}
+  m_RootOrder: 3
 --- !u!4 &437536
 Transform:
   m_ObjectHideFlags: 1
@@ -394,10 +558,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 0.32, z: 0}
+  m_LocalPosition: {x: -0.060000002, y: 0.308, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 490080}
+  m_Father: {fileID: 470198}
   m_RootOrder: 1
 --- !u!4 &439146
 Transform:
@@ -446,10 +610,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.135, y: 0.223, z: 0}
+  m_LocalPosition: {x: -0.13499999, y: 0.21099995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 490080}
+  m_Father: {fileID: 470198}
   m_RootOrder: 0
 --- !u!4 &452492
 Transform:
@@ -464,6 +628,42 @@ Transform:
   - {fileID: 490080}
   m_Father: {fileID: 428770}
   m_RootOrder: 0
+--- !u!4 &459904
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.06, y: 0.308, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 490080}
+  m_RootOrder: 1
+--- !u!4 &463732
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.135, y: 0.211, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 490080}
+  m_RootOrder: 0
+--- !u!4 &469352
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164222}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.060000002, y: 0.308, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 427576}
+  m_RootOrder: 1
 --- !u!4 &469620
 Transform:
   m_ObjectHideFlags: 1
@@ -486,9 +686,25 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 446266}
+  - {fileID: 437536}
+  - {fileID: 412562}
+  - {fileID: 490078}
   m_Father: {fileID: 469620}
   m_RootOrder: 0
+--- !u!4 &474854
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13499999, y: 0.211, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 427576}
+  m_RootOrder: 3
 --- !u!4 &475892
 Transform:
   m_ObjectHideFlags: 1
@@ -501,6 +717,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 444684}
   m_RootOrder: 0
+--- !u!4 &489536
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.060000002, y: 0.308, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 427576}
+  m_RootOrder: 2
 --- !u!4 &489972
 Transform:
   m_ObjectHideFlags: 1
@@ -508,7 +736,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.677, y: 1.194, z: 0}
+  m_LocalPosition: {x: 0.677, y: 1.187, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 422398}
@@ -521,10 +749,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.135, y: 0.223, z: 0}
+  m_LocalPosition: {x: 0.13499999, y: 0.21099995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 490080}
+  m_Father: {fileID: 470198}
   m_RootOrder: 3
 --- !u!4 &490080
 Transform:
@@ -536,11 +764,23 @@ Transform:
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 446266}
-  - {fileID: 437536}
-  - {fileID: 412562}
-  - {fileID: 490078}
+  - {fileID: 463732}
+  - {fileID: 459904}
+  - {fileID: 428472}
+  - {fileID: 429952}
   m_Father: {fileID: 452492}
+  m_RootOrder: 0
+--- !u!4 &491700
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.13499999, y: 0.211, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 427576}
   m_RootOrder: 0
 --- !u!23 &2314590
 MeshRenderer:
@@ -698,6 +938,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11400480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+    type: 2}
+  PrefabSpawnedByClick: {fileID: 184072, guid: 8e52a62ed089c4f49a63d72923fdcb24, type: 2}
+  OptionalPreviewOverridePrefab: {fileID: 0}
+  PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalScaling: {x: 4, y: 4, z: 4}
+  BaubleUnlockedProgressCondition:
+    Clauses:
+    - ProgressName: found_yellow_ball
+      Comparitor: 1
+      ProgressValue: 0
+      Concatenator: 0
+  DebugEnabled: 0
 --- !u!114 &11409380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,6 +972,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a31a803bf366864f85790311a1bcba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
+--- !u!114 &11409516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
+--- !u!114 &11413494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DebugEnabled: 0
@@ -750,6 +1039,18 @@ MonoBehaviour:
   FadeInHalflife: 0.05
   FadeOutHalflife: 0.25
   DebugEnabled: 0
+--- !u!114 &11414836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
 --- !u!114 &11417180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -768,37 +1069,12 @@ MonoBehaviour:
       ProgressValue: 2
       Concatenator: 0
   DebugEnabled: 0
---- !u!114 &11418258
+--- !u!114 &11417220
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b04743eaef43b4e4facd8197cda3ca6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetObject: {fileID: 0}
-  DebugEnabled: 0
---- !u!114 &11424288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugEnabled: 0
---- !u!114 &11424906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145016}
+  m_GameObject: {fileID: 183738}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
@@ -818,6 +1094,105 @@ MonoBehaviour:
       ProgressValue: 0
       Concatenator: 0
   DebugEnabled: 0
+--- !u!114 &11418258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b04743eaef43b4e4facd8197cda3ca6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetObject: {fileID: 0}
+  DebugEnabled: 0
+--- !u!114 &11419528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+    type: 2}
+  PrefabSpawnedByClick: {fileID: 170578, guid: da0f4cc5755200241aa92afd06790f72, type: 2}
+  OptionalPreviewOverridePrefab: {fileID: 0}
+  PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 45, y: 60, z: 90}
+  PreviewAdditionalScaling: {x: 3.5, y: 3.5, z: 3.5}
+  BaubleUnlockedProgressCondition:
+    Clauses:
+    - ProgressName: found_yellow_box
+      Comparitor: 1
+      ProgressValue: 0
+      Concatenator: 0
+  DebugEnabled: 0
+--- !u!114 &11424288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
+--- !u!114 &11424374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
+--- !u!114 &11424906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+    type: 2}
+  PrefabSpawnedByClick: {fileID: 149136, guid: 8add5a3ce41e2fb439c7f1556ac020da, type: 2}
+  OptionalPreviewOverridePrefab: {fileID: 0}
+  PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 0, y: 90, z: 45}
+  PreviewAdditionalScaling: {x: 3.5, y: 3.5, z: 3.5}
+  BaubleUnlockedProgressCondition:
+    Clauses:
+    - ProgressName: found_green_capsule
+      Comparitor: 1
+      ProgressValue: 0
+      Concatenator: 0
+  DebugEnabled: 0
+--- !u!114 &11428832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugEnabled: 0
 --- !u!114 &11434444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -830,6 +1205,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 120202}
+  DebugEnabled: 0
+--- !u!114 &11435216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   DebugEnabled: 0
 --- !u!114 &11442506
 MonoBehaviour:
@@ -858,6 +1245,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugEnabled: 0
+--- !u!114 &11453990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+    type: 2}
+  PrefabSpawnedByClick: {fileID: 186646, guid: 38bb53c1d74b9404bb4da37535a7e151, type: 2}
+  OptionalPreviewOverridePrefab: {fileID: 0}
+  PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 45, y: 90, z: 90}
+  PreviewAdditionalScaling: {x: 3.5, y: 3.5, z: 3.5}
+  BaubleUnlockedProgressCondition:
+    Clauses:
+    - ProgressName: found_green_box
+      Comparitor: 1
+      ProgressValue: 0
+      Concatenator: 0
+  DebugEnabled: 0
 --- !u!114 &11454686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,17 +1283,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
     type: 2}
-  PrefabSpawnedByClick: {fileID: 127910, guid: 0c13929ecff4fcc4a84d36708e6cfc93, type: 2}
+  PrefabSpawnedByClick: {fileID: 179474, guid: 9806fe87fa32fa543b0ab5767b4ee227, type: 2}
   OptionalPreviewOverridePrefab: {fileID: 0}
   PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
-  PreviewAdditionalRotation: {x: 0, y: 0, z: 0}
-  PreviewAdditionalScaling: {x: 4, y: 4, z: 4}
+  PreviewAdditionalRotation: {x: 0, y: 30, z: 45}
+  PreviewAdditionalScaling: {x: 3.5, y: 3.5, z: 3.5}
   BaubleUnlockedProgressCondition:
     Clauses:
-    - ProgressName: found_blue_ball
+    - ProgressName: found_blue_capsule
       Comparitor: 1
       ProgressValue: 0
       Concatenator: 0
+  DebugEnabled: 0
+--- !u!114 &11455552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   DebugEnabled: 0
 --- !u!114 &11456646
 MonoBehaviour:
@@ -924,14 +1348,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
     type: 2}
-  PrefabSpawnedByClick: {fileID: 184072, guid: 8e52a62ed089c4f49a63d72923fdcb24, type: 2}
+  PrefabSpawnedByClick: {fileID: 145162, guid: f9f8199fa6430174bb514743296b5d7c, type: 2}
   OptionalPreviewOverridePrefab: {fileID: 0}
   PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
-  PreviewAdditionalRotation: {x: 0, y: 0, z: 0}
-  PreviewAdditionalScaling: {x: 4, y: 4, z: 4}
+  PreviewAdditionalRotation: {x: 0, y: 60, z: 45}
+  PreviewAdditionalScaling: {x: 3.5, y: 3.5, z: 3.5}
   BaubleUnlockedProgressCondition:
     Clauses:
-    - ProgressName: found_yellow_ball
+    - ProgressName: found_yellow_capsule
       Comparitor: 1
       ProgressValue: 0
       Concatenator: 0
@@ -951,6 +1375,31 @@ MonoBehaviour:
   FadeInHalflife: 0.05
   FadeOutHalflife: 0.25
   DebugEnabled: 0
+--- !u!114 &11462350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+    type: 2}
+  PrefabSpawnedByClick: {fileID: 127910, guid: 0c13929ecff4fcc4a84d36708e6cfc93, type: 2}
+  OptionalPreviewOverridePrefab: {fileID: 0}
+  PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalScaling: {x: 4, y: 4, z: 4}
+  BaubleUnlockedProgressCondition:
+    Clauses:
+    - ProgressName: found_blue_ball
+      Comparitor: 1
+      ProgressValue: 0
+      Concatenator: 0
+  DebugEnabled: 0
 --- !u!114 &11469156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,6 +1413,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetObject: {fileID: 133500}
   DebugEnabled: 0
+--- !u!114 &11470406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+    type: 2}
+  PrefabSpawnedByClick: {fileID: 195796, guid: d0c341f7845119a44bb8c3886a771190, type: 2}
+  OptionalPreviewOverridePrefab: {fileID: 0}
+  PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalScaling: {x: 4, y: 4, z: 4}
+  BaubleUnlockedProgressCondition:
+    Clauses:
+    - ProgressName: found_red_ball
+      Comparitor: 1
+      ProgressValue: 0
+      Concatenator: 0
+  DebugEnabled: 0
 --- !u!114 &11470572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -975,6 +1449,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a31a803bf366864f85790311a1bcba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DebugEnabled: 0
+--- !u!114 &11472944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+    type: 2}
+  PrefabSpawnedByClick: {fileID: 109222, guid: 8e3a5ca5f6be67b41adbdac5142a3c48, type: 2}
+  OptionalPreviewOverridePrefab: {fileID: 0}
+  PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 45, y: 0, z: 90}
+  PreviewAdditionalScaling: {x: 3.5, y: 3.5, z: 3.5}
+  BaubleUnlockedProgressCondition:
+    Clauses:
+    - ProgressName: found_red_box
+      Comparitor: 1
+      ProgressValue: 0
+      Concatenator: 0
   DebugEnabled: 0
 --- !u!114 &11474890
 MonoBehaviour:
@@ -1011,6 +1510,43 @@ MonoBehaviour:
       Comparitor: 0
       ProgressValue: 3
       Concatenator: 0
+  DebugEnabled: 0
+--- !u!114 &11478142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d656a9de7d9e44383dfa9dc7c850e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
+    type: 2}
+  PrefabSpawnedByClick: {fileID: 198504, guid: 7c858cd14203eb9479dfda830017789f, type: 2}
+  OptionalPreviewOverridePrefab: {fileID: 0}
+  PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 45, y: 30, z: 90}
+  PreviewAdditionalScaling: {x: 3.5, y: 3.5, z: 3.5}
+  BaubleUnlockedProgressCondition:
+    Clauses:
+    - ProgressName: found_blue_box
+      Comparitor: 1
+      ProgressValue: 0
+      Concatenator: 0
+  DebugEnabled: 0
+--- !u!114 &11479312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee67c8db1d8682140852fade258a37ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   DebugEnabled: 0
 --- !u!114 &11486398
 MonoBehaviour:
@@ -1104,14 +1640,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmptyInventoryBaublePrefab: {fileID: 144332, guid: 82117789b23e6d34abb14e28a3526c8f,
     type: 2}
-  PrefabSpawnedByClick: {fileID: 195796, guid: d0c341f7845119a44bb8c3886a771190, type: 2}
+  PrefabSpawnedByClick: {fileID: 185192, guid: e5766f835724f344885eb53a310ea1b3, type: 2}
   OptionalPreviewOverridePrefab: {fileID: 0}
   PreviewAdditionalTranslation: {x: 0, y: 0, z: 0}
-  PreviewAdditionalRotation: {x: 0, y: 0, z: 0}
+  PreviewAdditionalRotation: {x: 0, y: 0, z: 45}
   PreviewAdditionalScaling: {x: 4, y: 4, z: 4}
   BaubleUnlockedProgressCondition:
     Clauses:
-    - ProgressName: found_red_ball
+    - ProgressName: found_red_capsule
       Comparitor: 1
       ProgressValue: 0
       Concatenator: 0

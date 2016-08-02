@@ -32,6 +32,7 @@ GameObject:
   - 23: {fileID: 2366850}
   - 114: {fileID: 11467086}
   - 114: {fileID: 11480358}
+  - 114: {fileID: 11462200}
   m_Layer: 0
   m_Name: inventory_bauble
   m_TagString: Untagged
@@ -164,6 +165,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalRotationAxis: {x: 0, y: 1, z: 0}
   DegreesPerSecond: 30
+--- !u!114 &11462200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4196a7b44142bfc4a87438e4ccc55342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeTargetColor: {r: 1.0698528, g: 1.411004, b: 1.5, a: 0.39}
+  FadeInHalflife: 0.05
+  FadeOutHalflife: 0.25
+  DebugEnabled: 0
 --- !u!114 &11467086
 MonoBehaviour:
   m_ObjectHideFlags: 1

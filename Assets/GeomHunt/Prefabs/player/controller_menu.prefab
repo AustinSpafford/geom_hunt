@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196a7b44142bfc4a87438e4ccc55342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeTargetColor: {r: 1.5, g: 1.5, b: 1.5, a: 1}
+  FadeTargetColor: {r: 1.202206, g: 1.4014201, b: 1.5, a: 0.6}
   FadeInHalflife: 0.05
   FadeOutHalflife: 0.25
   DebugEnabled: 0
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196a7b44142bfc4a87438e4ccc55342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeTargetColor: {r: 1.5, g: 1.5, b: 1.5, a: 1}
+  FadeTargetColor: {r: 1.202206, g: 1.4014201, b: 1.5, a: 0.6}
   FadeInHalflife: 0.05
   FadeOutHalflife: 0.25
   DebugEnabled: 0
@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4196a7b44142bfc4a87438e4ccc55342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeTargetColor: {r: 1.5, g: 1.5, b: 1.5, a: 1}
+  FadeTargetColor: {r: 1.202206, g: 1.4014201, b: 1.5, a: 0.6}
   FadeInHalflife: 0.05
   FadeOutHalflife: 0.25
   DebugEnabled: 0
